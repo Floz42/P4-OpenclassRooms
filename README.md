@@ -1,2 +1,2 @@
 # P4-OpenclassRooms
-Blog de Jean Rochefort
+Blog de Jean Forteroche.
