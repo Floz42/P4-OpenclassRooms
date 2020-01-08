@@ -8,8 +8,8 @@ $title = '';
     <head>
         <meta name="author" content="Florian THIEBAUD" />
         <meta name="copyright" content="©2019 Jean Forteroche " />
-        <meta name="description" content="<?= $description ?? 'Blog de l\'écrivain Jean Forteroche' ?>"/>
-        <meta name="keywords" content="<?= $keywords ?? 'blog,jean,forteroche,roman,écrivain,livre,articles,contact' ?>" />
+        <meta name="description" content="<?= $description ?? 'Blog de l\'écrivain Jean Forteroche, vous retrouverez ici son dernier roman "Billet simple pour l\'Alaska.' ?>"/>
+        <meta name="keywords" content="<?= $keywords ?? 'blog,jean,forteroche,roman,écrivain,livre,articles,contact,billet,simple,alaska' ?>" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="<?= $title ?? 'Blog de Jean Forteroche' ?>" />
@@ -30,7 +30,7 @@ $title = '';
         <?= $content ?>
 
         <footer>
-            
+
         </footer>
     
     </body>
