@@ -1,4 +1,5 @@
 <?php 
+namespace Blog\model;
 
 class Manager {
 
@@ -9,7 +10,7 @@ class Manager {
      */
     protected function dbConnect() {
         try {
-            $db = new \PDO('mysql:host=localhost;dbname=Blog;charset=utf8', 'root', 'root');
+            $db = new \PDO('mysql:host=localhost;dbname=Blog;charset=utf8', 'root', 'root', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
             echo '<div class="alert alert-success"> Connexion à la base de données réussie !</div>';
             return $db;
         }
