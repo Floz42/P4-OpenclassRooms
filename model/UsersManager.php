@@ -140,4 +140,5 @@ class UsersManager extends Manager
 
 $test = new UsersManager();
 $test->getUsers();
-$test->updateUser(4, 'rarara', 'rarara', 'rarara');
+
+
