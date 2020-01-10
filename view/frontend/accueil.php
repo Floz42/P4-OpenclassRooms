@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-    <div id="container" class="mt-5 container-fluid">
+    <div id="container_home" class="mt-5 container-fluid">
         <div id="accueil" class="row col-lg-12">
             <h4 class="one_title">
                 Bienvenue sur le blog de Jean Forteroche

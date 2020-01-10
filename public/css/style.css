@@ -145,9 +145,33 @@ a:hover, .active_link_header {
     max-width: 200px;
 }
 
-#container {
+#container_home {
     display: flex; 
     justify-content: center;
+}
+
+/***************** BIOGRAPHIE PAGE ****************/
+#container_bio {
+    display: flex; 
+    justify-content: center;
+    margin: auto;
+}
+
+#biographie {
+    display: flex; 
+    flex-direction: column;
+    padding-right: 3em; 
+    margin: auto;
+    border-right: 2px solid silver;
+}
+
+#biographie pre {
+    font-family: 'Gayathri-Regular', 'Roboto-Regular';
+    white-space : pre-line;
+}
+
+#portrait img {
+    border-radius: 15px;
 }
 
 /***************** FOOTER ****************/
@@ -160,6 +184,7 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
 
 
 
