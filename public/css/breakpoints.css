@@ -1,0 +1,15 @@
+@media all and (max-width: 767px) {
+
+    #site_title {
+        font-size: 1em;
+    }
+    .line_nav {
+        width: 300px;
+    }
+    .h_slider {
+        font-size: 1em;
+    }
+    .p_slider {
+        font-size: 0.8em;
+    }
+}
