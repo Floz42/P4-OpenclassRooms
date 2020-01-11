@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+if (empty($_SESSION['id'])) {
+    $connected = false;
+} else {
+    $connected = true;
+}
+?>
 <html lang="fr">
     <!-- TO ME - VARIABLES LIST : 
 $description = '';
@@ -31,10 +38,10 @@ $title = '';
                     </div>   
                     <div class="line_nav"></div> 
                     <ul class="col-lg-12">
-                        <li><a href="#">ACCUEIL</a></li>
-                        <li><a href="#">BIOGRAPHIE</a></li>
+                        <li><a href="index.php?action=accueil">ACCUEIL</a></li>
+                        <li><a href="index.php?action=biographie">BIOGRAPHIE</a></li>
                         <li><a href="#">CHAPITRES</a></li>
-                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="index.php?action=contact">CONTACT</a></li>
                     </ul>
                 </nav>
             </header>

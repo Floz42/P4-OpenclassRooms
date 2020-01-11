@@ -20,6 +20,10 @@ class Routes {
                     $controller = new MainController();
                     $controller->biographie();
                 break;
+                case 'contact' : 
+                    $controller = new MainController();
+                    $controller->contact();
+                break;
             }
         }
         catch(\Exception $e) 

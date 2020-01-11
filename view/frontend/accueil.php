@@ -13,7 +13,7 @@ ob_start();
             </p> 
             <div class="line_nav mb-3"></div>
             <p>
-                Si vous ne connaissez pas la vie passionnante de <span class="word_color">Jean Forteroche</span> nous avons mis à votre disposition une page <span class="word_color">Biographie</span> qui retrace son parcours professionnel et personne.
+                Si vous ne connaissez pas la vie passionnante de <span class="word_color">Jean Forteroche</span> nous avons mis à votre disposition une page <span class="word_color">Biographie</span> qui retrace son parcours professionnel et personnel.
             </p>
             <div class="line_nav mb-3"></div>
             <p>
