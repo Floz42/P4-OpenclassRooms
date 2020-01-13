@@ -1,7 +1,7 @@
 <?php
-$title = 'Biographie de Jean Forteroche, les dates clés';
-$description = 'Toutes les dates clés de la vie de Jean Forteroche, de sa naissance à la création de ce blog.';
-$keywords = 'biographie,jean,forteroche,écrivain,roman,romans,alaska,saint-etienne,livres,billet,simple';
+$title = 'Contact - Blog de Jean Forteroche';
+$description = 'Si vous avez une quesion ou une interrogation sur le site, votre compte ou tout autre, vous êtes au bon endroit.';
+$keywords = 'contact,question,jean,forteroche,formulaire,demande,compte,blog,site';
 
 ob_start();
 ?>
@@ -21,17 +21,11 @@ ob_start();
                 <button type="submit" name="submit" class="btn btn-outline-primary button_contact">Envoyer</button>
                 
                 <?= $confirm ?? '' ?>
-
-               
-
             </form>
-
-            
         </div>
     </div>
-    
-<?php 
 
+<?php 
 $content = ob_get_clean();
 require_once('view/template.php');
 ?>

@@ -2,7 +2,7 @@
 namespace Blog\model;
 use Blog\model\Manager;
 
-require_once 'Manager.php';
+require 'Manager.php';
 
 class ArticlesManager extends Manager 
 {
@@ -25,7 +25,7 @@ class ArticlesManager extends Manager
     public function getPosts() 
     {
         $articles = [];
-        $req = $this->db->query('SELECT * FROM Articles ORDER BY date_article DESC');
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY date_article DESC');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
         {
             $articles[] = $data;
@@ -97,11 +97,30 @@ class ArticlesManager extends Manager
         ));
     }
 
+    public function getCommentsByArticle($id_article) 
+    {
+        // $article_comments = [];
+        $success = false;
 
+        $req = $this->db->query(
+        'SELECT * 
+        FROM Comments
+        RIGHT JOIN Articles
+        ON Comments.id_article = Articles.id
+        ORDER BY date_comment
+        ');
+
+        /* while ($data = $req->fetch(\PDO::FETCH_ASSOC))
+        {
+            $article_comments[] = $data;
+        }
+        return $article_comments; */
+
+        if ($id_article != null) {
+            $success = true;
+        };
+        var_dump($success);
+    }
 }
 
-$test = new ArticlesManager();
 
-$test->getOnePost(1);
-// $test->deletePost(2);
-$test->updatePost(1, 'Modified second time', 'Je suis vraiment trop un boss');

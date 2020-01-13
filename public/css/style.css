@@ -88,12 +88,13 @@ li {
     font-size: 0.5em;
 }
 
-a:hover, .active_link_header {
+a:hover {
     text-decoration: none;
+}
+
+#menu a:hover, .active_link_header {
     border-bottom: 2px solid rgb(246, 178, 43);
     padding: 1.1em;
-    padding-left: 4em;
-    padding-right: 4em;
     font-weight: bold;
 }
 
@@ -220,6 +221,28 @@ footer {
     align-items: center;
 }
 
+/***************** ARTICLES PAGE ****************/
 
+#list_articles {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.one_article a {
+    padding: 0.5em;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.one_article a:hover {
+    background-color: rgb(246, 178, 43, 0.2); 
+    border-radius: 15px;
+}
 
 

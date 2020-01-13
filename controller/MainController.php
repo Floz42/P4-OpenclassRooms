@@ -1,7 +1,6 @@
 <?php 
 
 namespace controller;
-
 class MainController {
 
     public function accueil()
@@ -48,6 +47,19 @@ class MainController {
             }
         }
         require('view/frontend/contact.php');
+    }
+
+    public function articles()
+    {
+        require('model/ArticlesManager.php');
+        require('model/CommentsManager.php');
+
+        $articlesManager = new \blog\model\ArticlesManager;
+        $articles = $articlesManager->getPosts();
+        $commentsManager = new \blog\model\CommentsManager;
+        $comments = $commentsManager->getComments();
+        
+        require('view/frontend/articles.php');
     }
 
 

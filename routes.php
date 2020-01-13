@@ -24,6 +24,10 @@ class Routes {
                     $controller = new MainController();
                     $controller->contact();
                 break;
+                case 'articles' : 
+                    $controller = new MainController();
+                    $controller->articles();
+                break;
             }
         }
         catch(\Exception $e) 
