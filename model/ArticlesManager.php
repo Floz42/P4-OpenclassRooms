@@ -18,14 +18,15 @@ class ArticlesManager extends Manager
     }
 
     /**
-     * getPosts -> get all posts in DB
+     * getPosts -> get all posts 4 by 4 in DB
+     * Use for paging on website 
      *
      * @return array
      */
-    public function getPosts() 
-    {
+    public function getPosts_five($i) 
+    {   
         $articles = [];
-        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY date_article DESC');
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles LIMIT '. (($i - 1) * 4) .', 4');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
         {
             $articles[] = $data;
@@ -33,6 +34,21 @@ class ArticlesManager extends Manager
         return $articles;
     }
 
+    /**
+     * getPosts -> get all posts in DB
+     *
+     * @return void
+     */
+    public function getPosts() 
+    {
+        $articles = [];
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles');
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
+        {
+            $articles[] = $data;
+        }
+        return $articles;
+    }
     /**
      * getOnePost -> select a post in DB
      *
@@ -97,30 +113,17 @@ class ArticlesManager extends Manager
         ));
     }
 
-    public function getCommentsByArticle($id_article) 
+    /**
+     * countArticles 
+     *
+     * @return total articles in DB
+     */
+    public function countArticles()
     {
-        // $article_comments = [];
-        $success = false;
-
-        $req = $this->db->query(
-        'SELECT * 
-        FROM Comments
-        RIGHT JOIN Articles
-        ON Comments.id_article = Articles.id
-        ORDER BY date_comment
-        ');
-
-        /* while ($data = $req->fetch(\PDO::FETCH_ASSOC))
-        {
-            $article_comments[] = $data;
-        }
-        return $article_comments; */
-
-        if ($id_article != null) {
-            $success = true;
-        };
-        var_dump($success);
+        $req = $this->db->query('SELECT COUNT(id) as number_articles FROM Articles');
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
+        return $data;
     }
-}
 
+}
 

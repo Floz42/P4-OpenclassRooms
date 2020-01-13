@@ -13,6 +13,11 @@ class MainController {
         require('view/frontend/biographie.php');
     }
 
+    /**
+     * contact use to contact page and verify if all inputs aren't empty
+     *
+     * @return void
+     */
     public function contact()
     {        
         $confirm = false;
@@ -49,15 +54,27 @@ class MainController {
         require('view/frontend/contact.php');
     }
 
+    /**
+     * articles use to artciles page 
+     *
+     * @return void
+     */
     public function articles()
     {
         require('model/ArticlesManager.php');
         require('model/CommentsManager.php');
 
+        $i = (int)$_GET['index_page'];
+        $error = "<div class='alert alert-danger'> Une erreur est survenue, il est impossible d'afficher la liste des articles</div>";
+       
         $articlesManager = new \blog\model\ArticlesManager;
-        $articles = $articlesManager->getPosts();
-        $commentsManager = new \blog\model\CommentsManager;
-        $comments = $commentsManager->getComments();
+        $articles = $articlesManager->getPosts_five($i);
+        $count_articles = $articlesManager->countArticles();
+        $total_articles = (int)$count_articles["number_articles"];
+        $total_pages = ceil($total_articles / 4);   
+        $success = ($_GET['index_page'] > $total_pages || !(int)$_GET['index_page']|| $_GET['index_page'] < 0) ? false : true;
+
+     
         
         require('view/frontend/articles.php');
     }

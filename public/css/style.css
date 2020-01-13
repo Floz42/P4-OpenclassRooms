@@ -231,18 +231,37 @@ footer {
 
 }
 
+.one_article h4 {
+    margin: 0 !important;
+}
+
 .one_article a {
-    padding: 0.5em;
+    padding: 1em;
     display: flex; 
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center !important;
     color: black;
 }
 
 .one_article a:hover {
-    background-color: rgb(246, 178, 43, 0.2); 
+    background-color: rgb(246, 178, 43); 
+    color: white;
     border-radius: 15px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination a {
+    color: black;
+}
+
+.pagination a:hover, .pagination .pagination_active {
+        color: rgb(246, 178, 43);
 }
 
 
