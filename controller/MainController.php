@@ -100,12 +100,41 @@ class MainController {
         $comments = $commentManager->getCommentsToAPost($_GET['id']);
         $confirm = "<div class='alert alert-success'> Le commentaire à bien été signalé à l'administrateur </div>";
 
+        if ((!isset($_GET['reporting'])) || ($_GET['reporting'] !== 'on')) {
+            $has_report = '&reporting=on';
+        } else {
+            $has_report = '';
+        } 
+
         if (isset($_GET['report'])) {
             if ($_GET['report'] === 'one_report') {
                 $commentManager->addReport($_GET['id_comment']);
-                header('Location:' . $_SERVER["HTTP_REFERER"] . '&report=on');
-        } 
-    }
+                header('Location:' . $_SERVER["HTTP_REFERER"] . $has_report ?? '');
+            } 
+        }
+
+        $validation_comment = false;
+        if (!empty($_POST)) {
+            if (empty($_POST['post_comment'])) {
+                $validation_comment = false;
+                $message_comment = "<div class='alert alert-danger'> Le champ \"Votre commentaire ici :\" doit être rempli. </div>";
+            } else {
+            $validation_comment = true;
+            }
+        }
+
+        if ($validation_comment) {
+            $comment_author = 'Flo';
+            $comment_content = nl2br(htmlentities($_POST['post_comment']));
+            $id_post = $_GET['id'];
+            $commentManager->addComment($comment_author,$comment_content,$id_post);
+            header('Location: index.php?action=one_post&id=' . $_GET['id'] . '&com=true');
+        }
+
+        if (isset($_GET['com'])) {
+            $message_comment = "<div class='alert alert-success'> Merci ! Votre commentaire a bien été posté. </div>"; 
+        }
+
         require('view/frontend/one_post.php');
     }
 }

@@ -277,8 +277,8 @@ footer {
     font-family: 'Gayathri-Regular', 'Roboto-Regular';
     display: flex; 
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items:center;
+    justify-content: center;
     padding: 0;
 }
 
@@ -324,6 +324,10 @@ h2 {
     padding: 0.5em;
 }
 
+.head_comment:hover {
+    background-color: rgb(146, 140, 140, 0.7);
+}
+
 .author_comment {
     font-family: 'Roboto-Bold';
 }
@@ -341,5 +345,24 @@ h2 {
 }
 
 .report_link:hover {
-    color: rgb(246, 178, 43);
+    color: red;
+}
+
+#container_user {
+    font-family: 'Roboto-Regular';
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid rgb(170, 153, 153, 0.9);
+    border-radius: 5px;
+    padding: 0;
+}
+
+.head_user {
+    background-color: rgb(246, 178, 43);
+    border-radius: 5px 5px 0 0;
+    padding: 0.5em;
+}
+
+#container_user form textarea {
+    height: 120px;
 }
