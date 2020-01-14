@@ -40,7 +40,7 @@ $title = '';
                     <ul class="col-lg-12">
                         <li><a href="index.php?action=accueil">ACCUEIL</a></li>
                         <li><a href="index.php?action=biographie">BIOGRAPHIE</a></li>
-                        <li><a href="index.php?action=articles&index_page=1">ARTICLES</a></li>
+                        <li><a href="index.php?action=articles&index_page=1">CHAPITRES</a></li>
                         <li><a href="index.php?action=contact">CONTACT</a></li>
                     </ul>
                 </nav>

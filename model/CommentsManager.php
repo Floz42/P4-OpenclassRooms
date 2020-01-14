@@ -36,7 +36,7 @@ class CommentsManager extends Manager {
     public function getCommentsToAPost($id) 
     {
         $comments = [];
-        $req = $this->db->prepare('SELECT * FROM Comments WHERE id_article = :id ORDER BY date_comment');
+        $req = $this->db->prepare('SELECT * , DATE_FORMAT(date_comment, " %d/%m/%Y à %H:%m:%s") as date_comment FROM Comments WHERE id_article = :id ORDER BY date_comment');
         $req->execute(array('id' => $id));
         while ($data = $req->fetch(\PDO::FETCH_ASSOC))
         {
@@ -139,6 +139,3 @@ class CommentsManager extends Manager {
 
     
 }
-
-$test = new CommentsManager();
-$test->delReports(1);

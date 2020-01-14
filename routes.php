@@ -28,6 +28,10 @@ class Routes {
                     $controller = new MainController();
                     $controller->articles();
                 break;
+                case 'one_post' : 
+                    $controller = new MainController();
+                    $controller->one_post();
+                break;
             }
         }
         catch(\Exception $e) 

@@ -147,6 +147,7 @@ a:hover {
 }
 
 #container_home {
+    font-family: 'Gayathri-Regular', 'Roboto-Regular';
     display: flex; 
     justify-content: center;
 }
@@ -178,6 +179,7 @@ a:hover {
 /***************** CONTACT PAGE ****************/
  
 #contact {
+    font-family: 'Gayathri-Regular', 'Roboto-Regular';
     padding: 1em;
     display: flex; 
     justify-content: center;
@@ -213,6 +215,7 @@ a:hover {
 /***************** FOOTER ****************/
 
 footer {
+    font-family: 'Gayathri-Regular', 'Roboto-Regular';
     font-size: 0.7em;
     height: 3em; 
     border-top: 1px solid black;
@@ -224,6 +227,7 @@ footer {
 /***************** ARTICLES PAGE ****************/
 
 #list_articles {
+    font-family: 'Gayathri-Regular', 'Roboto-Regular';
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -231,8 +235,12 @@ footer {
 
 }
 
-.one_article h4 {
+.one_article h4, .one_article h5 {
     margin: 0 !important;
+}
+
+.one_article h5 {
+    color: rgb(246, 178, 43);
 }
 
 .one_article a {
@@ -244,10 +252,9 @@ footer {
     color: black;
 }
 
-.one_article a:hover {
+.one_article a:hover, .one_article a:hover h5 {
     background-color: rgb(246, 178, 43); 
     color: white;
-    border-radius: 15px;
 }
 
 .pagination {
@@ -256,12 +263,83 @@ footer {
     align-items: center;
 }
 
-.pagination a {
+.pagination a, .back  {
     color: black;
 }
 
-.pagination a:hover, .pagination .pagination_active {
+.pagination a:hover, .pagination .pagination_active, .back:hover {
         color: rgb(246, 178, 43);
 }
 
+/***************** ONE ARTICLE PAGE ****************/
 
+#container_article {
+    font-family: 'Gayathri-Regular', 'Roboto-Regular';
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+.head_article {
+    font-family: 'Roboto-Regular';
+    display: flex; 
+    flex-direction: column;
+    color: rgb(37, 37, 37);
+}
+
+.date_article {
+    color: grey;
+    font-size: 0.8em;
+}
+
+.head_article .title_article {
+    display: flex; 
+    align-items: center;
+}
+
+h2 {
+    margin: 0;
+}
+
+/***************** COMMENTS ON ARTICLE ****************/
+
+.container_comment {
+    display: flex; 
+    flex-direction: column;
+    border: 1px solid rgb(170, 153, 153, 0.3);
+    border-radius: 5px;
+    padding: 0;
+}
+
+.head_comment {
+    font-family: 'Roboto-Regular';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(146, 140, 140, 0.3);
+    margin: 0;
+    border-radius: 5px 5px 0 0;
+    padding: 0.5em;
+}
+
+.author_comment {
+    font-family: 'Roboto-Bold';
+}
+
+.date_comment {
+    font-size: 0.8em;
+}
+
+.body_comment {
+    margin: 0.5em;
+}
+
+.report_link {
+    color: black; 
+}
+
+.report_link:hover {
+    color: rgb(246, 178, 43);
+}

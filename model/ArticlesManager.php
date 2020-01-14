@@ -58,7 +58,7 @@ class ArticlesManager extends Manager
      */
     public function getOnePost($id)
     {
-        $req = $this->db->prepare('SELECT * FROM Articles WHERE id = :id');
+        $req = $this->db->prepare('SELECT *, DATE_FORMAT(date_article, " %d/%m/%Y à %H:%m:%s") as date_article FROM Articles WHERE id = :id');
         $req->execute(array('id' => $id));
         $article = $req->fetch(\PDO::FETCH_ASSOC);
         return $article; 
