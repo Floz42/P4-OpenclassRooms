@@ -32,6 +32,10 @@ class Routes {
                     $controller = new MainController();
                     $controller->one_post();
                 break;
+                case 'connexion' : 
+                    $controller = new MainController();
+                    $controller->connexion();
+                break;
             }
         }
         catch(\Exception $e) 

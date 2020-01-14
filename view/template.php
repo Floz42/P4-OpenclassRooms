@@ -32,6 +32,10 @@ $title = '';
     <body>
         <div id="page" class="container-fluid">
             <header>
+                <div class="connexion_home">
+                    <i class="mr-1 fas fa-user"></i> <a href="index.php?action=connexion">SE CONNECTER</a>
+                    <i class="mr-1 fas fa-pen"></i> <a href="index.php?action=connexion">S'INSCRIRE</a>
+                </div>
                 <nav id="menu" class="container-fluid mb-3">
                     <div id="site_title" class="col-lg-12">
                         JEAN FORTEROCHE

@@ -137,4 +137,48 @@ class MainController {
 
         require('view/frontend/one_post.php');
     }
+
+    public function connexion()
+    {
+        require('model/UsersManager.php');
+        $UsersManager = new \blog\model\UsersManager;
+        //$addUser = $UsersManager->addUser($pseudo,$password,$email);
+
+        if (isset($_POST['submit'])) {
+            $user_exist = $UsersManager->pseudoExist($_POST['pseudo']);
+            $validation = true;
+            if (empty($_POST['pseudo']) || empty($_POST['password']) || empty($_POST['confirm_password']) || empty($_POST['email'])) {
+                $message_error = '<div class="alert alert-danger mt-3">Tous les champs doivent être remplis</div>';
+                $validation = false;
+            }
+            if (strlen($_POST['pseudo']) < 6 ) {
+                $pseudo = '<div class="alert alert-danger mt-3">Votre pseudo doit comporter au moins 6 caractères.</div>';
+                $validation = false;
+            }
+            if ($user_exist == 1) {
+                $pseudo2 = '<div class="alert alert-danger mt-3">Ce pseudo est déjà pris.</div>';
+                $validation = false;
+            }
+            if ((strlen($_POST['password']) < 6) || ($_POST['password'] != $_POST['confirm_password'])) {
+                $password = '<div class="alert alert-danger mt-1">Les deux mots de passe doivent être identiques et comporter au moins 6 caractères.</div>';
+                $validation = false;
+            }
+            if (!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+                $email = '<div class="alert alert-danger mt-1">L\'adresse e-mail est invalide.</div>';
+                $validation = false;
+            }
+        
+            if ($validation) {
+                $pseudo_register = htmlentities($_POST['pseudo']);
+                $password_register = htmlentities(password_hash($_POST['password'], PASSWORD_DEFAULT));
+                $mail_register = htmlentities($_POST['email']);
+                $UsersManager->addUser($pseudo_register, $password_register, $mail_register);
+            }
+        } 
+
+
+
+
+        require('view/frontend/connexion.php');
+    }
 }

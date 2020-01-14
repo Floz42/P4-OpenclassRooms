@@ -80,6 +80,30 @@ li {
     list-style: none;
 }
 
+/***************** CONNEXION / INSCRIPTION / DECONNEXION ****************/
+
+.connexion_home {
+    font-family: 'Roboto-Thin';
+    font-size: 0.8em;
+    position: absolute; 
+    right: 1em;
+    top: 7em;
+    padding: 1em;
+    z-index: 5;
+}
+
+.connexion_home i {
+    color: rgb(246, 178, 43);
+}
+
+.connexion_home a {
+    color: black;
+    margin-right: 1em;
+}
+
+.connexion_home a:hover {
+    font-family: 'Roboto-Regular';
+}
 /***************** MENU-NAVBAR ********************/
 
 #menu a {
@@ -366,3 +390,40 @@ h2 {
 #container_user form textarea {
     height: 120px;
 }
+
+/***************** CONNEXION/INSCRIPTION PAGE ****************/
+
+#container_connexion {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container_block {
+    font-family:  'Roboto-Bold';
+    display: flex; 
+    justify-content: center;
+}
+
+.title_connexion {
+    font-size: 2.5em;
+    font-family:  'Roboto-Bold';
+    display: flex; 
+    justify-content: center;
+}
+
+.connexion, .inscription {
+    font-family:  'Roboto-Regular';
+    border: 2px solid black;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    margin: 1em;
+}
+
+.inscription {
+    background-color: rgb(247, 167, 8);
+    color: white;
+}
+

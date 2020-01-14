@@ -34,6 +34,14 @@ class UsersManager extends Manager
         return $users;
     }
 
+    public function pseudoExist($pseudo) 
+    {
+        $req = $this->db->prepare('SELECT COUNT(*) as pseudo_exist FROM Users WHERE pseudo = :pseudo'); 
+        $req->execute(array('pseudo' => $pseudo));
+        $users = $req->fetch(\PDO::FETCH_COLUMN);
+        return $users;
+    }
+
     /**
      * getOneUser -> select an user with his ID
      *
@@ -138,7 +146,6 @@ class UsersManager extends Manager
 
 }
 
-$test = new UsersManager();
-$test->getUsers();
+
 
 
