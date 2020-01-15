@@ -2,6 +2,7 @@
 namespace controller;
 session_start();
 require_once('controller/MainController.php');
+require_once('controller/AdminController.php');
 
 
 class Routes {
@@ -35,6 +36,15 @@ class Routes {
                 case 'connexion' : 
                     $controller = new MainController();
                     $controller->connexion();
+                    $controller->inscription();
+                break;
+                case 'deconnexion' : 
+                    $controller = new MainController();
+                    $controller->deconnexion();
+                break;
+                case 'admin' : 
+                    $controller = new AdminController();
+                    $controller->admin_accueil();
                 break;
             }
         }

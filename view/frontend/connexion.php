@@ -1,4 +1,6 @@
 <?php
+$title = "Blog de Jean Forteroche - Espace de connexion / inscription";
+$keywords = "blog,jean,forteroche,alaska,billet,simple,inscription,connexion,membres,commentaires,articles,chapitres";
 ob_start();
 ?>
     <div id="container_connexion" class="mt-5 container-fluid">

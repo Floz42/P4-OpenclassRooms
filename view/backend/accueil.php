@@ -27,7 +27,7 @@ ob_start();
     </div>
 <?php 
 $content = ob_get_clean();
-require_once('view/template.php');
+require_once('view/templateBackend.php');
 ?>
 
 

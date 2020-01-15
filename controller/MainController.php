@@ -8,12 +8,12 @@ class MainController {
 
     public function accueil()
     {
-        require('view/frontend/accueil.php');
+        require_once('view/frontend/accueil.php');
     }
 
     public function biographie()
     {
-        require('view/frontend/biographie.php');
+        require_once('view/frontend/biographie.php');
     }
 
     /**
@@ -54,17 +54,17 @@ class MainController {
                 mail($to, $form_subject, $form_message, $headers);
             }
         }
-        require('view/frontend/contact.php');
+        require_once('view/frontend/contact.php');
     }
 
     /**
-     * articles use to artciles page 
+     * articles use to articles page 
      *
      * @return void
      */
     public function articles()
     {
-        require('model/ArticlesManager.php');
+        require_once('model/ArticlesManager.php');
 
         $i = (int)htmlspecialchars($_GET['index_page']);
         $error = "<div class='alert alert-danger'> Une erreur est survenue, il est impossible d'afficher la liste des articles</div>";
@@ -76,7 +76,7 @@ class MainController {
         $total_pages = ceil($total_articles / 4);   
         $success = ($_GET['index_page'] > $total_pages || !(int)$_GET['index_page']|| $_GET['index_page'] < 0) ? false : true;
 
-        require('view/frontend/articles.php');
+        require_once('view/frontend/articles.php');
     }
 
     /**
@@ -86,8 +86,8 @@ class MainController {
      */
     public function one_post()
     {
-        require('model/ArticlesManager.php');
-        require('model/CommentsManager.php');
+        require_once('model/ArticlesManager.php');
+        require_once('model/CommentsManager.php');
 
         $articlesManager = new \blog\model\ArticlesManager;
         $article = $articlesManager->getOnePost($_GET['id']);
@@ -105,14 +105,12 @@ class MainController {
         } else {
             $has_report = '';
         } 
-
         if (isset($_GET['report'])) {
             if ($_GET['report'] === 'one_report') {
                 $commentManager->addReport($_GET['id_comment']);
                 header('Location:' . $_SERVER["HTTP_REFERER"] . $has_report ?? '');
             } 
         }
-
         $validation_comment = false;
         if (!empty($_POST)) {
             if (empty($_POST['post_comment'])) {
@@ -122,7 +120,6 @@ class MainController {
             $validation_comment = true;
             }
         }
-
         if ($validation_comment) {
             $comment_author = 'Flo';
             $comment_content = nl2br(htmlentities($_POST['post_comment']));
@@ -130,19 +127,17 @@ class MainController {
             $commentManager->addComment($comment_author,$comment_content,$id_post);
             header('Location: index.php?action=one_post&id=' . $_GET['id'] . '&com=true');
         }
-
         if (isset($_GET['com'])) {
             $message_comment = "<div class='alert alert-success'> Merci ! Votre commentaire a bien été posté. </div>"; 
         }
 
-        require('view/frontend/one_post.php');
+        require_once('view/frontend/one_post.php');
     }
 
-    public function connexion()
+    public function inscription()
     {
-        require('model/UsersManager.php');
+        require_once('model/UsersManager.php');
         $UsersManager = new \blog\model\UsersManager;
-        //$addUser = $UsersManager->addUser($pseudo,$password,$email);
 
         if (isset($_POST['submit'])) {
             $user_exist = $UsersManager->pseudoExist($_POST['pseudo']);
@@ -175,6 +170,13 @@ class MainController {
                 $UsersManager->addUser($pseudo_register, $password_register, $mail_register);
             }
         } 
+        require_once('view/frontend/connexion.php');
+    }
+
+    public function connexion()
+    {
+        require_once('model/UsersManager.php');
+        $UsersManager = new \blog\model\UsersManager;    
 
         if (isset($_POST['connexion'])) {
             $connexion = true; 
@@ -184,23 +186,29 @@ class MainController {
                 $message_connexion = '<div class="alert alert-danger mt-1">Erreur : Ce pseudo n\'existe pas. </div>';
             } else {
                 $get_user = $UsersManager->getOneUser($_POST['pseudo_connexion']);
-                $password = htmlentities($_POST['password_connexion']);
+                $password_connexion = htmlentities($_POST['password_connexion']);
                 $password_hash = $get_user['password'];
-                $password_verify = password_verify($password, $password_hash);
+                $password_verify = password_verify($password_connexion, $password_hash);
                 if (!$password_verify) {
                     $connexion = false; 
                     $message_connexion = '<div class="alert alert-danger mt-1">Vos informations de connexion ne sont pas les bonnes. </div>';
                 }
             }
-            
             if ($connexion) {
+                $user_role = $get_user['user_role'];
                 $message_connexion = '<div class="alert alert-success mt-1">Vous êtes maintenant connecté. </div>';
+                $_SESSION['pseudo'] = $_POST['pseudo_connexion'];
+                $_SESSION['connected'] = true;
+                $_SESSION['user_role'] = $user_role;
             }
         }
+        require_once('view/frontend/connexion.php');
+    }
 
-
-
-
-        require('view/frontend/connexion.php');
+    public function deconnexion()
+    {
+        unset($_SESSION['connected']);
+        unset($_SESSION['user_role']);
+        header('Location: index.php?action=accueil');
     }
 }
