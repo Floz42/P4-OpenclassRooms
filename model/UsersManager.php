@@ -49,10 +49,10 @@ class UsersManager extends Manager
      *
      * @return array
      */
-    public function getOneUser($id)
+    public function getOneUser($pseudo)
     {
-        $req = $this->db->prepare('SELECT * FROM Users WHERE id = :id');
-        $req->execute(array('id' => $id));
+        $req = $this->db->prepare('SELECT * FROM Users WHERE pseudo = :pseudo');
+        $req->execute(array('pseudo' => $pseudo));
         $user = $req->fetch(\PDO::FETCH_ASSOC);
         return $user; 
     }
@@ -145,7 +145,5 @@ class UsersManager extends Manager
     }
 
 }
-
-
 
 

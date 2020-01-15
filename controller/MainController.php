@@ -176,6 +176,28 @@ class MainController {
             }
         } 
 
+        if (isset($_POST['connexion'])) {
+            $connexion = true; 
+            $pseudo_exist = $UsersManager->pseudoExist($_POST['pseudo_connexion']); 
+            if ($pseudo_exist == 0) {
+                $connexion = false; 
+                $message_connexion = '<div class="alert alert-danger mt-1">Erreur : Ce pseudo n\'existe pas. </div>';
+            } else {
+                $get_user = $UsersManager->getOneUser($_POST['pseudo_connexion']);
+                $password = htmlentities($_POST['password_connexion']);
+                $password_hash = $get_user['password'];
+                $password_verify = password_verify($password, $password_hash);
+                if (!$password_verify) {
+                    $connexion = false; 
+                    $message_connexion = '<div class="alert alert-danger mt-1">Vos informations de connexion ne sont pas les bonnes. </div>';
+                }
+            }
+            
+            if ($connexion) {
+                $message_connexion = '<div class="alert alert-success mt-1">Vous êtes maintenant connecté. </div>';
+            }
+        }
+
 
 
 

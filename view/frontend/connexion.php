@@ -10,10 +10,11 @@ ob_start();
                 </div>
                 <form method="post" action="#" class="col-lg-8">
                     <label class="m-0 mt-5" for="pseudo">Pseudo :</label>
-                    <input type="text" name="pseudo" class="form-control" required>
+                    <input type="text" name="pseudo_connexion" class="form-control" required>
                     <label class="m-0 mt-2" for="password">Mot de passe :</label>
-                    <input type="password" name="password" class="form-control" required>
-                    <input type="submit" name="submit" class="btn btn-outline-secondary btn-sm mt-3 mb-3" value="Envoyer">
+                    <input type="password" name="password_connexion" class="form-control" required>
+                    <input type="submit" name="connexion" class="btn btn-outline-secondary btn-sm mt-3 mb-3" value="Envoyer">
+                    <?= $message_connexion ?? '' ?>
                 </form>
             </div>
 
