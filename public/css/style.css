@@ -429,5 +429,32 @@ h2 {
 
 .connexion {
     border: 2px solid rgb(247, 167, 8);
-
 }
+
+/***************** ADMINISTRATION BLOG ****************/
+#container_admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#accueil_admin {
+    margin: 1em;
+    padding: 0;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}
+#accueil_admin p strong {
+    font-size: 1.3em;
+    color: rgb(247, 167, 8);
+}
+
+#accueil_admin p {
+    margin: 2em;
+}
+
+
+
+
+

@@ -25,12 +25,11 @@ class UsersManager extends Manager
     public function getUsers()
     { 
         $users = [];
-        $req = $this->db->query('SELECT * FROM Users ORDER BY id ASC');
+        $req = $this->db->query('SELECT *, UPPER(user_role) as user_role FROM Users ORDER BY id ASC');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC))
         {
             $users[] = $data;
         }
-        var_dump($users);
         return $users;
     }
 
@@ -113,37 +112,22 @@ class UsersManager extends Manager
 
 
     /**
-     * addAdmin -> change user_role to "admin"
+     * addAdmin -> change user_role 
      *
      * @param  mixed $id
      *
      * @return void
      */
-    public function addAdmin($id)
+    public function changeRole($id, $user_role)
     {
-        $req = $this->db->prepare('UPDATE Users SET user_role = :adminRole WHERE id = :id');
+        $req = $this->db->prepare('UPDATE Users SET user_role = :user_role WHERE id = :id');
         $req->execute(array(
-            'adminRole' => 'admin',
-            'id' => $id
-        ));
-    }
-
-    /**
-     * delAdmin -> change user_role to "user"
-     *
-     * @param  mixed $id
-     *
-     * @return void
-     */
-    public function delAdmin($id)
-    {
-        $req = $this->db->prepare('UPDATE Users SET user_role = :adminRole WHERE id = :id');
-        $req->execute(array(
-            'adminRole' => 'user',
+            'user_role' => $user_role,
             'id' => $id
         ));
     }
 
 }
+
 
 

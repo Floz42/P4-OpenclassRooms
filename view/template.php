@@ -34,7 +34,7 @@ $title = '';
                     <?php } else { ?>
                         <i class="fas fa-sign-out-alt"></i> <a href="index.php?action=deconnexion">SE DECONNECTER</a>
                     <?php if ($_SESSION['user_role'] == 'admin') { ?>
-                        <i class="fas fa-unlock-alt"></i> <strong><a href="index.php?action=accueil">ESPACE ADMINISTRATION</a></strong>
+                        <i class="fas fa-unlock-alt"></i> <strong><a href="index.php?action=admin">ESPACE ADMINISTRATION</a></strong>
                     <?php } } ?>
                 </div>
                 <nav id="menu" class="container-fluid mb-3">

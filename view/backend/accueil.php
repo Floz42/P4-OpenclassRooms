@@ -1,29 +1,13 @@
 <?php
 ob_start();
 ?>
-    <div id="container_home" class="mt-5 container-fluid">
-        <div id="accueil" class="row col-lg-12">
-            <h4 class="one_title">
-                Bienvenue sur le blog de Jean Forteroche <br>
-            </h4>
-            <div class="line_nav mb-3"></div>
-            <p>
-                Vous allez vivre sur ce blog une <span class="word_color">expérience unique</span>. Jean Forteroche vous fait découvrir ici <span class="word_color">l'Alaska</span> comme vous ne l'avez jamais vue.
-                Tout ceci à travers différents billets qui constitueront son <span class="word_color">nouveau roman</span>.
-            </p> 
-            <div class="line_nav mb-3"></div>
-            <p>
-                Si vous ne connaissez pas la vie passionnante de <span class="word_color">Jean Forteroche</span> nous avons mis à votre disposition une page <span class="word_color">Biographie</span> qui retrace son parcours professionnel et personnel.
-            </p>
-            <div class="line_nav mb-3"></div>
-            <p>
-                Pour une meilleure interactivité vous pouvez laisser vos <span class="word_color">commetaires</span> en dessous de chaque article.
-            </p>
-            <div class="line_nav mb-3"></div>
-            <p>
-                Pour toute question ou suggestion concernant le site, l'auteur ou autre, nous avons mis à votre disposition une <span class="word_color">page contact</span>.
-            </p>
-        </div>
+    <div id="container_admin" class="mt-5 container-fluid">
+        <div id="accueil_admin" class="row col-lg-10">
+           <h1>Bienvenue sur l'espace d'administration.</h1>
+           <p> C'est ici que pourrez gérer vos articles, les commentaires qui y sont associés mais aussi la liste des utilisateurs enregistrés. Si vous êtes tombé sur cette page par erreur merci de quitter cette page.</p>
+           <p><strong> ARTICLES :</strong> c'est ici que vous éditez de nouveaux chapitres de votre roman. Il vous sera aussi possible de modifier un article. </p> 
+           <p><strong> COMMENTAIRES :</strong> dans cette section il vous sera possible de voir tous les commentaires laissés sur vos articles. Ils sont classés pas nombre de signalement afin de faciliter leur modération. Vous pourrez ainsi supprimer un commentaire où remettre à 0 le nombre de signalements.</p>
+           <p><strong> UTILISATEURS :</strong> vous aurez ici une liste de tous les utilisateurs de votre site ainsi que de leur "rôle". Vous pouvez supprimer un utilisateur ou éditer les rôles utilisateurs (admin/user).</p>
     </div>
 <?php 
 $content = ob_get_clean();

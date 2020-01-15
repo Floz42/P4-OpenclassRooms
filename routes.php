@@ -46,6 +46,14 @@ class Routes {
                     $controller = new AdminController();
                     $controller->admin_accueil();
                 break;
+                case 'utilisateurs' : 
+                    $controller = new AdminController();
+                    $controller->admin_users();
+                break;
+                case 'commentaires' : 
+                    $controller = new AdminController();
+                    $controller->admin_comments();
+                break;
             }
         }
         catch(\Exception $e) 

@@ -208,6 +208,7 @@ class MainController {
     public function deconnexion()
     {
         unset($_SESSION['connected']);
+        unset($_SESSION['pseudo']);
         unset($_SESSION['user_role']);
         header('Location: index.php?action=accueil');
     }

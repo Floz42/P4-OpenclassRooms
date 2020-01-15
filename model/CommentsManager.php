@@ -52,7 +52,7 @@ class CommentsManager extends Manager {
      */
     public function getComments() {
         $comments = [];
-        $req = $this->db->query('SELECT * FROM Comments ORDER BY reports, date_comment Desc ');
+        $req = $this->db->query('SELECT * FROM Comments ORDER BY reports DESC, date_comment DESC ');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC))
         {
             $comments[] = $data;
