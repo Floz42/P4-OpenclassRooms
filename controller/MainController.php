@@ -73,7 +73,7 @@ class MainController {
         $articles = $articlesManager->getPosts_five($i);
         $count_articles = $articlesManager->countArticles();
         $total_articles = (int)$count_articles["number_articles"];
-        $total_pages = ceil($total_articles / 4);   
+        $total_pages = ceil($total_articles / 5);   
         $success = ($_GET['index_page'] > $total_pages || !(int)$_GET['index_page']|| $_GET['index_page'] < 0) ? false : true;
 
         require_once('view/frontend/articles.php');
@@ -121,7 +121,7 @@ class MainController {
             }
         }
         if ($validation_comment) {
-            $comment_author = 'Flo';
+            $comment_author = $_SESSION['pseudo'];
             $comment_content = nl2br(htmlentities($_POST['post_comment']));
             $id_post = $_GET['id'];
             $commentManager->addComment($comment_author,$comment_content,$id_post);
@@ -200,6 +200,7 @@ class MainController {
                 $_SESSION['pseudo'] = $_POST['pseudo_connexion'];
                 $_SESSION['connected'] = true;
                 $_SESSION['user_role'] = $user_role;
+                setcookie('expiration', 'date', time() + 60 * 60 * 12, null, null, false, true);
             }
         }
         require_once('view/frontend/connexion.php');
@@ -207,9 +208,8 @@ class MainController {
 
     public function deconnexion()
     {
-        unset($_SESSION['connected']);
-        unset($_SESSION['pseudo']);
-        unset($_SESSION['user_role']);
+        session_destroy();
+        setcookie('expiration', 'date', -360);
         header('Location: index.php?action=accueil');
     }
 }

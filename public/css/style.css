@@ -376,6 +376,7 @@ h2 {
     font-family: 'Roboto-Regular';
     display: flex; 
     flex-direction: column; 
+    justify-content: center;
     border: 1px solid rgb(170, 153, 153, 0.9);
     border-radius: 5px;
     padding: 0;
@@ -385,10 +386,13 @@ h2 {
     background-color: rgb(246, 178, 43);
     border-radius: 5px 5px 0 0;
     padding: 0.5em;
+    width: 100%;
 }
 
 #container_user form textarea {
     height: 120px;
+    width: 100%;
+    margin: auto;
 }
 
 /***************** CONNEXION/INSCRIPTION PAGE ****************/
@@ -454,7 +458,20 @@ h2 {
     margin: 2em;
 }
 
+table tbody th i {
+    color: rgb(247, 167, 8);
+}
 
+table .border_table {
+    border: 2px solid black;
+}
+
+.write_article {
+    border-top : 2px solid rgb(247, 167, 8);
+    border-bottom : 2px solid rgb(247, 167, 8); 
+    display: flex;
+    justify-content: center;
+}
 
 
 

@@ -33,10 +33,18 @@ HTML;
             ?>
         <div id="container_user" class="mt-3 mb-3 col-lg-6 col-xs-12">
             <div class="head_user">POSTER UN COMMENTAIRE : </div>
+            <?php if (!isset($_SESSION['pseudo'])) {
+                echo <<<HTML
+                <div class="col-lg-10 mx-auto">
+                    <div class="text-center mt-5 mb-5 alert alert-danger"><h4>Vous devez être connecté pour poster un commentaire.</h4></div>
+                    <div class="text-center mb-5"><a href="index.php?action=connexion"><button type="button" class="btn btn-primary">SE CONNECTER / S'INSCRIRE</button></a></div>
+HTML;
+            } else {?>
             <form action="index.php?action=one_post&id=<?= $_GET['id']?>" method="POST">
                 <textarea class="form-control" name="post_comment" placeholder="Votre commentaire ici :"></textarea>
                 <input name="submit" type="submit" id="inputGroup-sizing-sm" value="Envoyer" class="btn btn-outline-secondary btn-sm mt-2 mb-2 ml-2">
             </form>
+            <?php } ?>
         </div>
         <?= $message_comment ?? '' ?>
 

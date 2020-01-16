@@ -1,6 +1,10 @@
 <?php 
 namespace controller;
 session_start();
+if (!isset($_COOKIE['expiration'])) {
+    session_destroy();
+}
+
 require_once('controller/MainController.php');
 require_once('controller/AdminController.php');
 
@@ -44,15 +48,23 @@ class Routes {
                 break;
                 case 'admin' : 
                     $controller = new AdminController();
+                    $controller->verif_role();
                     $controller->admin_accueil();
                 break;
                 case 'utilisateurs' : 
                     $controller = new AdminController();
+                    $controller->verif_role();
                     $controller->admin_users();
                 break;
                 case 'commentaires' : 
                     $controller = new AdminController();
+                    $controller->verif_role();
                     $controller->admin_comments();
+                break;
+                case 'admin_articles' : 
+                    $controller = new AdminController();
+                    $controller->verif_role();
+                    $controller->admin_articles();
                 break;
             }
         }

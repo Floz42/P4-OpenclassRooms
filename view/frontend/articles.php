@@ -39,11 +39,8 @@ HTML;
                     }
                 ?>
                 <i class="fa fa-chevron-right ml-1" aria-hidden="true"></i>
-
             </div>
-            <?php } ?>
-                    
-
+                <?php } ?>
     </div>
 
 <?php 

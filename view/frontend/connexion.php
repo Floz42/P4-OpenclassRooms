@@ -6,6 +6,13 @@ ob_start();
     <div id="container_connexion" class="mt-5 container-fluid">
         <div class="row title_connexion col-lg-12 mb-3">Connexion / Inscription</div>
         <div class="container_block">
+        <?php if (isset($_SESSION['pseudo'])) {
+                echo <<<HTML
+                <div class="col-lg-10">
+                    <div class="text-center mt-5 mb-5 alert alert-success"><h4>Vous êtes connecté en temps que {$_SESSION['pseudo']}</h4></div>
+                    <div class="mb-5"><a href="index.php?action=deconnexion"><button type="button" class="btn btn-primary">Se déconnecter</button></a></div>
+HTML;
+            } else {?>
             <div class="connexion col-lg-5 col-xs-12">
                 <div class="mt-2 head_connexion">
                     <h3>Déjà membre ? </h3>
@@ -43,6 +50,7 @@ ob_start();
                     <?= $message_error ?? '' ?>
                 </form>
             </div>
+                    <?php } ?>
         </div>
     </div>
 <?php 

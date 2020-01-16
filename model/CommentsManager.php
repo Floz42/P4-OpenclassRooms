@@ -61,6 +61,24 @@ class CommentsManager extends Manager {
     }
 
     /**
+     * getPosts_five can return comments 5 by 5 in DB
+     *
+     * @param  mixed $i
+     *
+     * @return void
+     */
+    public function getComments_five($i) 
+    {   
+        $comments = [];
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_comment, "%d/%m/%Y") as date_comment FROM Comments ORDER BY reports DESC, date_comment ASC LIMIT '. (($i - 1) * 5) .', 5');
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
+        {
+            $comments[] = $data;
+        }
+        return $comments;
+    }
+
+    /**
      * addComment -> add comment in DB
      *
      * @param  mixed $author
@@ -135,6 +153,18 @@ class CommentsManager extends Manager {
     {
         $req = $this->db->prepare('UPDATE Comments SET reports = 0 WHERE id = :id');
         $req->execute(array('id' => $id));
+    }
+
+        /**
+     * countComments 
+     *
+     * @return total comments in DB
+     */
+    public function countComments()
+    {
+        $req = $this->db->query('SELECT COUNT(id) as number_comments FROM Comments');
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
+        return $data;
     }
 
     

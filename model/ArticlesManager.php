@@ -2,7 +2,7 @@
 namespace Blog\model;
 use Blog\model\Manager;
 
-require 'Manager.php';
+require_once 'Manager.php';
 
 class ArticlesManager extends Manager 
 {
@@ -26,7 +26,7 @@ class ArticlesManager extends Manager
     public function getPosts_five($i) 
     {   
         $articles = [];
-        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles LIMIT '. (($i - 1) * 4) .', 4');
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles LIMIT '. (($i - 1) * 5) .', 5');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
         {
             $articles[] = $data;
@@ -49,6 +49,23 @@ class ArticlesManager extends Manager
         }
         return $articles;
     }
+    
+    /**
+     * getPosts -> get all posts in DB
+     *
+     * @return void
+     */
+    public function getPosts_reverse() 
+    {
+        $articles = [];
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY id DESC');
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
+        {
+            $articles[] = $data;
+        }
+        return $articles;
+    }
+
     /**
      * getOnePost -> select a post in DB
      *
@@ -126,4 +143,5 @@ class ArticlesManager extends Manager
     }
 
 }
+
 
