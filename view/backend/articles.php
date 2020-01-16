@@ -21,7 +21,6 @@ ob_start();
             </form>
         </div>
         <?php foreach($articles as $article) {
-            $article_extract = substr($article['content_article'], 0, 255);
             echo <<<HTML
             <table class="table table-bordered mt-5">
                 <tbody>
@@ -35,10 +34,10 @@ ob_start();
                     <th scope="col">{$article['date_article']}</th>
                 </tr>
                 <tr class="border_table">
-                    <td colspan="4" class="text-center"><h3>EXTRAIT DU CHAPITRE :</h3></td>
+                    <td colspan="4" class="text-center"><h3>CONTENU DU CHAPITRE :</h3></td>
                 </tr>
                 <tr class="border_table">
-                    <td colspan="4">{$article_extract}</td>
+                    <td colspan="4">{$article['content_article']}</td>
                 </tr>
                 <tr class= border_table>
                     <td colspan="2" class="text-center"><a href="index.php?action=admin_articles&update_post={$article['id']}"><button type="submit" name="update_post" class="btn btn-primary">METTRE À JOUR</button></a></td>
