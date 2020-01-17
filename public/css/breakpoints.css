@@ -12,4 +12,23 @@
     .p_slider {
         font-size: 0.8em;
     }
+    #container_bio {
+        display: flex;
+        flex-direction: column;
+    }
+    #biographie {
+        padding: 0;
+        margin: 0;
+    }
+    .container_block  {
+        flex-direction: column;
+    }
+    .connexion, .inscription {
+        margin: 0 0 2em 0;
+        
+    }
+    .title_connexion {
+        font-size: 2em;
+    }
+  
 }

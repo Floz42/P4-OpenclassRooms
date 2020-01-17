@@ -25,14 +25,19 @@ class AdminController {
         if (isset($_GET['id_role'])) {
             $role = ($_GET['role'] === 'USER') ? 'admin' : 'user';
             $change_role = $usersManager->changeRole($_GET['id_role'], $role);
-            header('Location: index.php?action=utilisateurs');
-            $message = "<div class='alert alert-success'>Le rôle utilisateur a bien été changé.</div>";
+            header('Location: index.php?action=utilisateurs&change_role=true');
+        }
+        if (isset($_GET['change_role'])) {
+            $message = "<div class='alert alert-success'>Le rôle de l'utilisateur à bien été changé.</div>";
         }
 
         if (isset($_GET['delete'])) {
             $delete_user = $usersManager->delUser($_GET['delete']);
-            header('Location: index.php?action=utilisateurs');
-            $message = "<div class='alert alert-success'>L'utilisateur a bien été supprimé.</div>";
+            header('Location: index.php?action=utilisateurs&delete_user=true');
+        }
+
+        if (isset($_GET['delete_user'])) {
+            $message = "<div class='alert alert-success'>L'utilisateur a été supprimé de la base de donnée.</div>";
         }
 
         require_once('view/backend/utilisateurs.php');
@@ -59,12 +64,20 @@ class AdminController {
 
         if(isset($_GET['delete_comment'])) {
             $delete_comment = $commentsManager->delComment($_GET['delete_comment']);
-            header('Location: index.php?action=commentaires&index_comments=1');
+            header('Location: index.php?action=commentaires&index_comments=1&comment_deleted=true');
+        }
+
+        if (isset($_GET['comment_deleted'])) {
+            $message = "<div class='alert alert-success'>Le commentaire à bien été supprimé.</div>";
         }
 
         if(isset($_GET['set_empty'])) {
             $delete_reports = $commentsManager->delReports($_GET['set_empty']);
-            header('Location: index.php?action=commentaires&index_comments=1');
+            header('Location: index.php?action=commentaires&index_comments=1&reports_set_empty=true');
+        }
+
+        if (isset($_GET['reports_set_empty'])) {
+            $message = "<div class='alert alert-success'>Il n'y a plus de signalement(s) sur ce commentaire. </div>";
         }
 
         require_once('view/backend/commentaires.php');

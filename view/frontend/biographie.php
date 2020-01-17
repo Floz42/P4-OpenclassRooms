@@ -6,7 +6,7 @@ $keywords = 'biographie,jean,forteroche,écrivain,roman,romans,alaska,saint-etie
 ob_start();
 ?>
     <div id="container_bio" class="mt-5 container mb-5">
-        <div id="biographie" class="row col-lg-6 col-xs-12 mb-3">
+        <div id="biographie" class="row col-lg-6 col-md-12 mb-3">
             <h4 class="one_title mb-5">
                 Biographie de Jean Forteroche - Dates clés :
             </h4>
@@ -43,7 +43,7 @@ ob_start();
 
             </pre>        
         </div>
-        <div id="portrait" class="col-lg-6 col-xs-12">
+        <div id="portrait" class="col-lg-6 col-xs-3">
             <img src="public/img/portrait.png" alt="portrait Jean Forteroche">
         </div>
     </div>

@@ -6,6 +6,7 @@ ob_start();
            <h3>Voici la liste des commentaires sur vos articles.</h3>
            <p> Ceux qui ont le plus de signalements sont affichés en premiers. Vous pouvez remettre les signalements à 0 si vous estimez que ceux-ci sont infondés ou supprimer le commentaire</p>
         </div>
+        <div> <?= $message ?? ''; ?></div>
         <?php foreach($comments as $comment) {
             $report = ($comment['reports'] == 0) ? 'Aucun' : $comment['reports'];
             $disabled = ($comment['reports'] == 0) ? 'disabled' : '';

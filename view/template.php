@@ -62,14 +62,14 @@ $title = '';
                     <div class="carousel-item">
                         <img src="public/img/alaska1.png" class="d-block w-100" alt="Billet simple Alaska">
                         <div class="blog_slider carousel-caption d-none d-md-block">
-                            <h2 class="h_slider">"BILLET SIMPLE POUR L ' ALASKA"</h2>
+                            <h2 class="h_slider mb-2">"BILLET SIMPLE POUR L ' ALASKA"</h2>
                             <p class="p_slider">Préparez-vous à une expérience unique.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="public/img/alaska2.png" class="d-block w-100" alt="Billet simple Alaska">
                         <div class="blog_slider carousel-caption d-none d-md-block">
-                            <h2 class="h_slider">"BILLET SIMPLE POUR L ' ALASKA"</h2>
+                            <h2 class="h_slider mb-2">"BILLET SIMPLE POUR L ' ALASKA"</h2>
                             <p class="p_slider">Jean vous fait découvrir l'Alaska comme vous ne l'avez jamais vu.</p>
                         </div>
                     </div>

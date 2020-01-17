@@ -7,6 +7,7 @@ ob_start();
 ?>
     <div id="container_contact" class="mt-5 container mb-5">
         <div id="contact" class="row col-lg-12 mb-3">
+            <p> Pour tout question vous pouvez nous contacter via le formulaire ci-dessous.</p>
             <form action="" method="post">
                 <div class="input_contact"><i class="fas fa-user"></i> <input type="text" class="form-control" name="name" placeholder="Votre nom"></div>
                 <?= $name ?? '' ?>
