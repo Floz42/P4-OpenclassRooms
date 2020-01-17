@@ -7,9 +7,16 @@ ob_start();
            <p>Vous avez ici la possibilité de modifier vos chapitres mais également d'en rédiger de nouveaux. Les chapitres sont affichés par ordre inversé pour que vous ayez un coup d'oeil sur les derniers chapitres rédigés.</p>
            <?= $confirm ?? ''?>
         </div>
-        <div class="mt-5 mb-5 col-lg-12 write_article">
-            <form class="col-lg-8 mt-5 mb-5" method="post" action="index.php?action=admin_articles&add_article">
-                <label for="title_article"><h3>TITRE DU CHAPITRE : </h3></label>
+        <h2 class="mt-5 text-center"> <?= $title_write_article ?? 'AJOUTER UN CHAPITRE A VOTRE ROMAN :' ?></h2>
+
+        <div class="mt-1 mb-5 col-lg-12 write_article">
+            <form class="col-lg-8 mt-5 mb-5" method="post" action="">
+                <label for="id" style="<?= $display ?? ''?>"><h3>ID : </h3></label>
+                <input class="form-control" style="<?= $display ?? ''?>" type="text" name="id" disabled="true" value="<?= $id_article ?? ''?>">
+                <label class="mt-3" for="number_article"><h3>NUMÉRO DU CHAPITRE : </h3></label>
+                <input class="form-control" type="text" name="number_article" value="<?= $number_article ?? "current_number"?>">
+                <?= $confirm_number_article ?? ''?>
+                <label class="mt-3" for="title"><h3>TITRE DU CHAPITRE : </h3></label>
                 <input class="form-control" type="text" name="title" value="<?= $title_article ?? ''?>">
                 <?= $confirm_title ?? ''?>
                 <label class="mt-3" for="mytextarea"><h3>CONTENU DU CHAPITRE : </h3></label>
@@ -24,12 +31,12 @@ ob_start();
             echo <<<HTML
             <table class="table table-bordered mt-5">
                 <tbody>
-                    <th><i class="fas fa-user"></i> ID</th>
+                    <th><i class="fas fa-user"></i> NUMÉRO CHAPITRE</th>
                     <th><i class="fas fa-heading"></i> TITRE CHAPITRE</th>
                     <th><i class="fas fa-clock"></i> DATE DE PUBLICATION</th>
                 </tbody>
                 <tr>
-                    <th scope="col">{$article['id']}</th>
+                    <th scope="col">{$article['number_article']}</th>
                     <th scope="col">{$article['title_article']}</th>
                     <th scope="col">{$article['date_article']}</th>
                 </tr>

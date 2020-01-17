@@ -77,10 +77,14 @@ class AdminController {
 
         $articlesManager = new \blog\model\ArticlesManager;
         $articles = $articlesManager->getPosts_reverse();
+        $last_number_article = $articlesManager->lastNumberArticle();
+        $number_article = (int)$last_number_article['number_article'] + 1;
+        $display = 'display: none;';
+
 
         $publication = false; 
         if (!empty($_POST['published'])) {
-            if (empty($_POST['title']) || empty($_POST['content'])) {
+            if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['number_article'])) {
                 if (empty($_POST['title'])) {
                     $publication = false; 
                     $confirm_title = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un titre pour votre chapitre.</div>";
@@ -89,43 +93,83 @@ class AdminController {
                     $publication = false; 
                     $confirm_content = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un contenu pour votre chapitre.</div>";
                 }  
+                if (empty($_POST['number_article'])) {
+                    $publication = false; 
+                    $confirm_number_article = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un numéro pour votre chapitre.</div>";
+                }  
+                elseif (!(int)($_POST['number_article'])) {
+                    $publication = false; 
+                    $confirm_number_article = "<div class='alert alert-danger'>Vous devez rentrez un chiffre en numéro de chapitre.</div>";
+                } 
             } else {
                 $publication = true; 
             }
         }
     
         if ($publication) {
-            $published = $articlesManager->createPost($_POST['title'], $_POST['content']);
-            header('Location: index.php?action=admin_articles&published');
+            $published = $articlesManager->createPost($_POST['title'], $_POST['number_article'], $_POST['content']);
         }
 
         if (isset($_GET['published'])) {
+            header('Location: index.php?action=admin_articles');
             $confirm = "<div class='alert alert-success'>Félicitations ! Votre chapitre a bien été publié.</div>";
+            
         }
 
         if (isset($_GET['update_post'])) {
             $article = $articlesManager->getOnePost($_GET['update_post']);
             $title_article = $article['title_article']; 
             $content_article = $article['content_article'];
+            $id_article = $article['id'];
+            $display = 'initial';
+            $number_article = $article['number_article'];
             $confirm_article = 'METTRE A JOUR';
             $button_confirm = 'updates';
-            $getid = $_GET['update_post'];
+            $title_write_article = 'MODIFIER UN CHAPITRE DE VOTRE ROMAN :';
         }
 
-        if (!empty($_POST['update_post'])) {
+        $update_article = false;
+        if (!empty($_POST['updates'])) {
+            if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['number_article'])) {
+                if (empty($_POST['title'])) {
+                    $update_article= false; 
+                    $confirm_title = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un titre pour votre chapitre.</div>";
+                }
+                if (empty($_POST['content'])) {
+                    $update_article = false; 
+                    $confirm_content = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un contenu pour votre chapitre.</div>";
+                }  
+                if (empty($_POST['number_article'])) {
+                    $update_article = false; 
+                    $confirm_number_article = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un numéro pour votre chapitre.</div>";
+                }  
+                elseif (!(int)($_POST['number_article'])) {
+                    $update_article = false; 
+                    $confirm_number_article = "<div class='alert alert-danger'>Vous devez rentrez un chiffre en numéro de chapitre.</div>";
+                } 
+            } else {
+                $update_article = true; 
+            }
+        }
+
+        if ($update_article) {
             $confirm_article = 'PUBLIER';
-            $update = $articlesManager->updatePost($getid, $_POST['title'], $_POST['content']); 
-            $confirm = "<div class='alert alert-success'>Félicitations ! Votre chapitre a bien été mise à jour.</div>";
+            $update = $articlesManager->updatePost($id_article, $_POST['number_article'], $_POST['title'], $_POST['content']); 
+            header('Location: index.php?action=admin_articles&updated=true');
+        }
+
+        if(isset($_GET['updated'])) {
+            header('Location: index.php?action=admin_articles');
+
         }
 
         if (isset($_GET['delete_post'])) {
-            $update = $articlesManager->deletePost($_GET['delete_post']); 
-            $confirm = "<div class='alert alert-success'>Félicitations ! Votre chapitre a bien été poupou.</div>";
+            $delete = $articlesManager->deletePost($_GET['delete_post']); 
             header('Location: index.php?action=admin_articles&delete_success');
-
         }
+
         if(isset($_GET['delete_success'])) {
-            $confirm = "<div class='alert alert-success'>Félicitations ! Votre chapitre a bien été publié.</div>";
+            $confirm = "<div class='alert alert-success'>Votre chapitre a bien été supprimé.</div>";
         }
 
         require_once('view/backend/articles.php');

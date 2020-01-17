@@ -26,7 +26,7 @@ class ArticlesManager extends Manager
     public function getPosts_five($i) 
     {   
         $articles = [];
-        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles LIMIT '. (($i - 1) * 5) .', 5');
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY number_article DESC LIMIT '. (($i - 1) * 5) .', 5');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
         {
             $articles[] = $data;
@@ -42,7 +42,7 @@ class ArticlesManager extends Manager
     public function getPosts() 
     {
         $articles = [];
-        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles');
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY number_article DESC');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
         {
             $articles[] = $data;
@@ -58,7 +58,7 @@ class ArticlesManager extends Manager
     public function getPosts_reverse() 
     {
         $articles = [];
-        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY id DESC');
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY number_article DESC');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
         {
             $articles[] = $data;
@@ -89,12 +89,13 @@ class ArticlesManager extends Manager
      *
      * @return void
      */
-    public function createPost($title, $content)
+    public function createPost($title, $number_article, $content)
     {
-        $req = $this->db->prepare('INSERT INTO Articles (title_article, content_article, date_article) VALUES(:title, :content, NOW())');
+        $req = $this->db->prepare('INSERT INTO Articles (number_article, title_article, content_article, date_article, ) VALUES(:number_article, :title, :content, NOW())');
         $req->execute(array(
             'title' => $title,
-            'content' => $content
+            'content' => $content,
+            'number_article' => $number_article
         ));
     }
 
@@ -120,13 +121,14 @@ class ArticlesManager extends Manager
      *
      * @return void
      */
-    public function updatePost($id, $title, $content)
+    public function updatePost($id, $number_article, $title, $content)
     {
-        $req = $this->db->prepare('UPDATE Articles SET title_article = :title, content_article = :content WHERE id = :id'); 
+        $req = $this->db->prepare('UPDATE Articles SET number_article = :number_article, title_article = :title, content_article = :content WHERE id = :id'); 
         $req->execute(array(
             'id' => $id,
             'title' => $title,
-            'content' => $content
+            'content' => $content,
+            'number_article' => $number_article
         ));
     }
 
@@ -138,6 +140,18 @@ class ArticlesManager extends Manager
     public function countArticles()
     {
         $req = $this->db->query('SELECT COUNT(id) as number_articles FROM Articles');
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
+        return $data;
+    }
+
+    /**
+     * lastNumberArticle return the last number_article (not id)
+     *
+     * @return int
+     */
+    public function lastNumberArticle()
+    {
+        $req = $this->db->query('SELECT * FROM Articles ORDER BY number_article DESC LIMIT 0,1');
         $data = $req->fetch(\PDO::FETCH_ASSOC);
         return $data;
     }

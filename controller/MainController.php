@@ -139,14 +139,14 @@ class MainController {
         require_once('model/UsersManager.php');
         $UsersManager = new \blog\model\UsersManager;
 
-        if (isset($_POST['submit'])) {
-            $user_exist = $UsersManager->pseudoExist($_POST['pseudo']);
+        if (isset($_POST['submit_subscribe'])) {
+            $user_exist = $UsersManager->pseudoExist($_POST['pseudo_subscribe']);
             $validation = true;
-            if (empty($_POST['pseudo']) || empty($_POST['password']) || empty($_POST['confirm_password']) || empty($_POST['email'])) {
-                $message_error = '<div class="alert alert-danger mt-3">Tous les champs doivent être remplis</div>';
+            if (empty($_POST['pseudo_subscribe']) || empty($_POST['password_subscribe']) || empty($_POST['confirm_password_subscribe']) || empty($_POST['email_subscribe'])) {
+                $message_subscribe = '<div class="alert alert-danger mt-3">Tous les champs doivent être remplis</div>';
                 $validation = false;
             }
-            if (strlen($_POST['pseudo']) < 6 ) {
+            if (strlen($_POST['pseudo_subscribe']) < 6 ) {
                 $pseudo = '<div class="alert alert-danger mt-3">Votre pseudo doit comporter au moins 6 caractères.</div>';
                 $validation = false;
             }
@@ -154,19 +154,20 @@ class MainController {
                 $pseudo2 = '<div class="alert alert-danger mt-3">Ce pseudo est déjà pris.</div>';
                 $validation = false;
             }
-            if ((strlen($_POST['password']) < 6) || ($_POST['password'] != $_POST['confirm_password'])) {
+            if ((strlen($_POST['password_subscribe']) < 6) || ($_POST['password_subscribe'] != $_POST['confirm_password_subscribe'])) {
                 $password = '<div class="alert alert-danger mt-1">Les deux mots de passe doivent être identiques et comporter au moins 6 caractères.</div>';
                 $validation = false;
             }
-            if (!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+            if (!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email_subscribe'])) {
                 $email = '<div class="alert alert-danger mt-1">L\'adresse e-mail est invalide.</div>';
                 $validation = false;
             }
         
             if ($validation) {
-                $pseudo_register = htmlentities($_POST['pseudo']);
-                $password_register = htmlentities(password_hash($_POST['password'], PASSWORD_DEFAULT));
-                $mail_register = htmlentities($_POST['email']);
+                $message_subscribe = '<div class="alert alert-success mt-3">Votre inscription est bien prise en compte, vous pouvez maintenant vous connecter./div>';
+                $pseudo_register = htmlentities($_POST['pseudo_subscribe']);
+                $password_register = htmlentities(password_hash($_POST['password_subscribe'], PASSWORD_DEFAULT));
+                $mail_register = htmlentities($_POST['email_subscribe']);
                 $UsersManager->addUser($pseudo_register, $password_register, $mail_register);
             }
         } 

@@ -19,7 +19,7 @@ ob_start();
                         $id = $article['id'];    
                         echo <<<HTML
                         <div class="one_article col-lg-6 col-xs-12 text-center">
-                            <a href="index.php?action=one_post&id={$id}"><h4> CHAPITRE : </h4><h5>  {$article['title_article']} </h5></a>
+                            <a href="index.php?action=one_post&id={$id}"><h4> CHAPITRE {$article['number_article']} :</h4><h5>  {$article['title_article']} </h5></a>
                             <hr>
                         </div>
 HTML;

@@ -11,7 +11,7 @@ ob_start();
     </div>
     <div id="container_article" class="mt-1 container col-lg-10 col-xs-12">
         <div class="head_article col-lg-10 col-xs-12">
-            <div class="title_article"><h2>Chapitre : <?= $title_article; ?></h2></div>
+            <div class="title_article"><h2>Chapitre <?= $article['number_article'] ?> : <?= $title_article; ?></h2></div>
             <div class="date_article"><i><?= $date_article; ?></i></div>
         </div>
         <div class="content_article mt-3 mb-5 text-justify">

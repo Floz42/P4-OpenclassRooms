@@ -33,21 +33,21 @@ HTML;
                     Remplissez le formulaire ci-dessous :
                 </div>
                 <form method="post" action="#" class="col-lg-8">
-                    <label class="m-0 mt-2" for="pseudo">Pseudo :</label>
-                    <input type="text" name="pseudo" class="form-control" required>
+                    <label class="m-0 mt-2" for="pseudo_subscribe">Pseudo :</label>
+                    <input type="text" name="pseudo_subscribe" class="form-control" required>
                     <?= $pseudo ?? '' ?>
                     <?= $pseudo2 ?? '' ?>
-                    <label class="m-0 mt-2" for="password">Mot de passe :</label>
-                    <input type="password" name="password" class="form-control" required>
+                    <label class="m-0 mt-2" for="password_subscribe">Mot de passe :</label>
+                    <input type="password" name="password_subscribe" class="form-control" required>
                     <?= $password ?? '' ?>
-                    <label class="m-0 mt-2" for="confirm_password">Confirmation mot de passe :</label>
-                    <input type="password" name="confirm_password" class="form-control" required>
+                    <label class="m-0 mt-2" for="confirm_password_subscribe">Confirmation mot de passe :</label>
+                    <input type="password" name="confirm_password_subscribe" class="form-control" required>
                     <?= $password ?? '' ?>
-                    <label class="m-0" for="email">E-mail :</label>
-                    <input type="text" name="email" class="form-control" required>
+                    <label class="m-0 mt-2" for="email_subscribe">E-mail :</label>
+                    <input type="text" name="email_subscribe" class="form-control" required>
                     <?= $email ?? '' ?>
-                    <input type="submit" name="submit" class="btn btn-outline-secondary btn-sm mt-3 mb-3" value="S'inscrire">
-                    <?= $message_error ?? '' ?>
+                    <input type="submit" name="submit_subscribe" class="btn btn-outline-secondary btn-sm mt-3 mb-3" value="S'inscrire">
+                    <?= $message_subscribe ?? '' ?>
                 </form>
             </div>
                     <?php } ?>
