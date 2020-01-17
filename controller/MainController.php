@@ -134,11 +134,37 @@ class MainController {
         require_once('view/frontend/one_post.php');
     }
 
-    public function inscription()
+    public function connexion()
     {
         require_once('model/UsersManager.php');
-        $UsersManager = new \blog\model\UsersManager;
-        
+        $UsersManager = new \blog\model\UsersManager;    
+
+        if (isset($_POST['connexion'])) {
+            $connexion = true; 
+            $pseudo_exist = $UsersManager->pseudoExist($_POST['pseudo_connexion']); 
+            if ($pseudo_exist == 0) {
+                $connexion = false; 
+                $message_connexion = '<div class="alert alert-danger mt-1">Erreur : Ce pseudo n\'existe pas. </div>';
+            } else {
+                $get_user = $UsersManager->getOneUser($_POST['pseudo_connexion']);
+                $password_connexion = htmlentities($_POST['password_connexion']);
+                $password_hash = $get_user['password'];
+                $password_verify = password_verify($password_connexion, $password_hash);
+                if (!$password_verify) {
+                    $connexion = false; 
+                    $message_connexion = '<div class="alert alert-danger mt-1">Vos informations de connexion ne sont pas les bonnes. </div>';
+                }
+            }
+            if ($connexion) {
+                $user_role = $get_user['user_role'];
+                $message_connexion = '<div class="alert alert-success mt-1">Vous êtes maintenant connecté. </div>';
+                $_SESSION['pseudo'] = $_POST['pseudo_connexion'];
+                $_SESSION['connected'] = true;
+                $_SESSION['user_role'] = $user_role;
+                setcookie('expiration', 'date', time() + 60 * 60 * 12, null, null, false, true);
+            }
+        }
+
         if (isset($_POST['submit_subscribe'])) {
             $validation = true;
             $user_exist = $UsersManager->pseudoExist($_POST['pseudo_subscribe']);
@@ -171,39 +197,6 @@ class MainController {
                 $UsersManager->addUser($pseudo_register, $password_register, $mail_register);
             }
         } 
-        require_once('view/frontend/connexion.php');
-    }
-
-    public function connexion()
-    {
-        require_once('model/UsersManager.php');
-        $UsersManager = new \blog\model\UsersManager;    
-
-        if (isset($_POST['connexion'])) {
-            $connexion = true; 
-            $pseudo_exist = $UsersManager->pseudoExist($_POST['pseudo_connexion']); 
-            if ($pseudo_exist == 0) {
-                $connexion = false; 
-                $message_connexion = '<div class="alert alert-danger mt-1">Erreur : Ce pseudo n\'existe pas. </div>';
-            } else {
-                $get_user = $UsersManager->getOneUser($_POST['pseudo_connexion']);
-                $password_connexion = htmlentities($_POST['password_connexion']);
-                $password_hash = $get_user['password'];
-                $password_verify = password_verify($password_connexion, $password_hash);
-                if (!$password_verify) {
-                    $connexion = false; 
-                    $message_connexion = '<div class="alert alert-danger mt-1">Vos informations de connexion ne sont pas les bonnes. </div>';
-                }
-            }
-            if ($connexion) {
-                $user_role = $get_user['user_role'];
-                $message_connexion = '<div class="alert alert-success mt-1">Vous êtes maintenant connecté. </div>';
-                $_SESSION['pseudo'] = $_POST['pseudo_connexion'];
-                $_SESSION['connected'] = true;
-                $_SESSION['user_role'] = $user_role;
-                setcookie('expiration', 'date', time() + 60 * 60 * 12, null, null, false, true);
-            }
-        }
         require_once('view/frontend/connexion.php');
     }
 

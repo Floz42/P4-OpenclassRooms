@@ -81,8 +81,7 @@ class AdminController {
         $number_article = (int)$last_number_article['number_article'] + 1;
         $display = 'display: none;';
 
-
-        $publication = false; 
+        $publication_article = false; 
         if (!empty($_POST['published'])) {
             if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['number_article'])) {
                 if (empty($_POST['title'])) {
@@ -90,31 +89,29 @@ class AdminController {
                     $confirm_title = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un titre pour votre chapitre.</div>";
                 }
                 if (empty($_POST['content'])) {
-                    $publication = false; 
+                    $publication_article = false; 
                     $confirm_content = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un contenu pour votre chapitre.</div>";
                 }  
                 if (empty($_POST['number_article'])) {
-                    $publication = false; 
+                    $publication_article = false; 
                     $confirm_number_article = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un numéro pour votre chapitre.</div>";
                 }  
                 elseif (!(int)($_POST['number_article'])) {
-                    $publication = false; 
+                    $publication_article = false; 
                     $confirm_number_article = "<div class='alert alert-danger'>Vous devez rentrez un chiffre en numéro de chapitre.</div>";
                 } 
             } else {
-                $publication = true; 
+                $publication_article = true; 
             }
         }
 
-        if ($publication) {
-            $published = $articlesManager->createPost($_POST['title'], $_POST['number_article'], $_POST['content']);
-            header('Location: index.php?action=admin_articles?article_published=true');            
-
+        if ($publication_article) {
+            $articlesManager->createPost($_POST['title'], $_POST['number_article'], $_POST['content']);
+            header('Location: index.php?action=admin_articles&article_published=true');            
         }
 
         if (isset($_GET['article_published'])) {
             $confirm = "<div class='alert alert-success'>Félicitations ! Votre chapitre a bien été publié.</div>";
-            header('Location: index.php?action=admin_articles?article_published=true');            
         }
 
         if (isset($_GET['update_post'])) {
@@ -161,8 +158,6 @@ class AdminController {
 
         if(isset($_GET['updated'])) {
             $confirm = "<div class='alert alert-success'>Votre chapitre a bien été mis à jour.</div>";
-            header('Location: index.php?action=admin_articles&updated=true');
-
         }
 
         if (isset($_GET['delete_post'])) {

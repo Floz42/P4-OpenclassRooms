@@ -70,7 +70,7 @@ class CommentsManager extends Manager {
     public function getComments_five($i) 
     {   
         $comments = [];
-        $req = $this->db->query('SELECT *, DATE_FORMAT(date_comment, "%d/%m/%Y") as date_comment FROM Comments ORDER BY reports DESC, date_comment ASC LIMIT '. (($i - 1) * 5) .', 5');
+        $req = $this->db->query('SELECT *, DATE_FORMAT(date_comment, "%d/%m/%Y à %H:%i:%s") as date_comment FROM Comments ORDER BY reports DESC, date_comment DESC LIMIT '. (($i - 1) * 5) .', 5');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
         {
             $comments[] = $data;

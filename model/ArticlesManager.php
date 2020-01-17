@@ -91,11 +91,11 @@ class ArticlesManager extends Manager
      */
     public function createPost($title, $number_article, $content)
     {
-        $req = $this->db->prepare('INSERT INTO Articles (number_article, title_article, content_article, date_article, ) VALUES(:number_article, :title, :content, NOW())');
+        $req = $this->db->prepare('INSERT INTO Articles (number_article, title_article, content_article, date_article) VALUES(:number_article, :title, :content, NOW())');
         $req->execute(array(
             'title' => $title,
-            'content' => $content,
-            'number_article' => $number_article
+            'number_article' => $number_article,
+            'content' => $content
         ));
     }
 

@@ -9,7 +9,7 @@ ob_start();
         <?php if (isset($_SESSION['pseudo'])) {
                 echo <<<HTML
                 <div class="col-lg-10">
-                    <div class="text-center mt-5 mb-5 alert alert-success"><h4>Vous êtes connecté en temps que {$_SESSION['pseudo']}</h4></div>
+                    <div class="text-center mt-5 mb-5 alert alert-success"><h4>Vous êtes connecté en tant que {$_SESSION['pseudo']}</h4></div>
                     <div class="mb-5"><a href="index.php?action=deconnexion"><button type="button" class="btn btn-primary">Se déconnecter</button></a></div>
 HTML;
             } else {?>
