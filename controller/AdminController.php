@@ -105,15 +105,16 @@ class AdminController {
                 $publication = true; 
             }
         }
-    
+
         if ($publication) {
             $published = $articlesManager->createPost($_POST['title'], $_POST['number_article'], $_POST['content']);
+            header('Location: index.php?action=admin_articles?article_published=true');            
+
         }
 
-        if (isset($_GET['published'])) {
-            header('Location: index.php?action=admin_articles');
+        if (isset($_GET['article_published'])) {
             $confirm = "<div class='alert alert-success'>Félicitations ! Votre chapitre a bien été publié.</div>";
-            
+            header('Location: index.php?action=admin_articles?article_published=true');            
         }
 
         if (isset($_GET['update_post'])) {
@@ -159,7 +160,8 @@ class AdminController {
         }
 
         if(isset($_GET['updated'])) {
-            header('Location: index.php?action=admin_articles');
+            $confirm = "<div class='alert alert-success'>Votre chapitre a bien été mis à jour.</div>";
+            header('Location: index.php?action=admin_articles&updated=true');
 
         }
 

@@ -39,8 +39,8 @@ class Routes {
                 break;
                 case 'connexion' : 
                     $controller = new MainController();
-                    $controller->connexion();
                     $controller->inscription();
+                    $controller->connexion();
                 break;
                 case 'deconnexion' : 
                     $controller = new MainController();
