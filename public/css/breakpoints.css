@@ -1,7 +1,9 @@
-@media all and (max-width: 767px) {
+@media all and (max-width: 768px) {
 
     #site_title {
         font-size: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
     }
     .line_nav {
         width: 300px;
@@ -30,5 +32,147 @@
     .title_connexion {
         font-size: 2em;
     }
-  
+
+    /********************* BURGER ********************/
+    
+    .line_nav, .menu_classic li, .connexion_home i, .connexion_home a, .menu_connexion_burger {
+        display: none;
+    }
+
+    .menu_connexion_burger {
+        flex-direction: column;
+        margin: 15px;
+    }
+
+    #menu_burger {
+        display: initial;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 15px;
+        z-index: 1000;
+    }
+
+    .menu_burger {
+        display: flex;
+        flex-direction: column;
+        opacity: 0.5;
+        z-index: 999;
+        margin-top: 2em !important;
+    }
+
+    .menu_burger li {
+        display: none;
+        font-size: 1.5em;
+    }
+    
+    #block_menu {
+        position: absolute;
+        width: 0px; 
+        background-color: rgb(246, 178, 43);
+        height: 100%;
+        z-index: 998;
+    }
+    
+    #burger {
+        width: 30px;
+        height: 30px; 
+        border: 1px solid orange; 
+        background-color: rgb(255,255,255,0.5);
+        border-radius: 5px;
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    #lines {
+        display: flex; 
+        flex-direction: column;
+        position: absolute;
+        justify-content: space-around;
+        align-items: center;
+        width: 20px; 
+        height: 20px;
+    }
+
+    .line {
+        width: 20px; 
+        height: 3px; 
+        background-color: rgb(0, 0, 0);
+        border-radius: 10px;
+    }
+    
+    .first_line {
+        transition: 0.5s;
+    }
+    
+    @keyframes rotateFirst {
+        from {
+            transform: translateY(0px) rotate(0deg);
+        }
+        to {
+            transform: translateY(8px) rotate(405deg) scale(1);
+        }
+    }
+    
+    @keyframes rotateFirstReverse {
+        from {
+            transform: translateY(8px) rotate(405deg) scale(1);
+        }
+        to {
+            transform: translateY(0) rotate(0) scale(1);
+        }
+    }
+    
+    @keyframes rotateThird {
+        from {
+            transform: translateY(0px) rotate(0deg);
+        }
+        to {
+            transform: translateY(-5px) rotate(-405deg) scale(1);
+        }
+    }
+    
+    @keyframes rotateThirdReverse {
+        from {
+            transform: translateY(-5px) rotate(-405deg) scale(1);
+        }
+        to {
+            transform: translateY(0) rotate(0) scale(1);
+        }
+    }
+    
+    @keyframes moveRight {
+        from {
+            width: 0px;
+        }
+        to {
+            width: 100%;
+        }
+    }
+    
+    @keyframes moveLeft {
+        from {
+            width: 100%;
+        }
+        to {
+            width: 0px;
+        }
+    }
+    table, .btn {
+        font-size: 0.7em !important;
+    }
+    table {
+        padding: 0;
+    }
+
+
+}
+
+@media all and (min-width: 769px) {
+    #menu_burger, #block_menu {
+        display: none;
+    }
 }

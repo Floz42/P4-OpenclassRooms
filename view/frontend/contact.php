@@ -5,7 +5,7 @@ $keywords = 'contact,question,jean,forteroche,formulaire,demande,compte,blog,sit
 
 ob_start();
 ?>
-    <div id="container_contact" class="mt-5 container mb-5">
+    <div id="container_contact" class="mt-5 container-fluid mb-5">
         <div id="contact" class="row col-lg-12 mb-3">
             <p> Pour tout question vous pouvez nous contacter via le formulaire ci-dessous.</p>
             <form action="" method="post">

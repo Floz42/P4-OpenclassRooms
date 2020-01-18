@@ -40,9 +40,38 @@ $title = '';
                 <nav id="menu" class="container-fluid mb-3">
                     <div id="site_title" class="col-lg-12">
                         JEAN FORTEROCHE
-                    </div>   
+                    </div>
+                    <div id="menu_burger">
+                        <div id="burger">
+                            <div id="lines">
+                                <div class="line first_line"></div>
+                                <div class="line second_line"></div>
+                                <div class="line third_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="block_menu">
+                        <ul class="menu_burger">
+                            <li><a href="index.php?action=accueil">ACCUEIL</a></li>
+                            <li><a href="index.php?action=biographie">BIOGRAPHIE</a></li>
+                            <li><a href="index.php?action=articles&index_page=1">CHAPITRES</a></li>
+                            <li><a href="index.php?action=contact">CONTACT</a></li>
+                            <div class="menu_connexion_burger">
+                                <?php
+                                    if (!isset($_SESSION['connected'])) { ?>
+                                            <div class="link_burger"><i class="mr-1 fas fa-user"></i> <a href="index.php?action=connexion">SE CONNECTER</a></div>
+                                            <div class="link_burger"><i class="mr-1 fas fa-pen"></i> <a href="index.php?action=connexion">S'INSCRIRE</a></div>
+                                        <?php } else { ?>
+                                            <div class="link_burger"><i class="fas fa-sign-out-alt"></i> <a href="index.php?action=deconnexion">SE DECONNECTER</a></div>
+                                        <?php if ($_SESSION['user_role'] == 'admin') { ?>
+                                            <div class="link_burger"><i class="fas fa-unlock-alt"></i> <strong><a href="index.php?action=admin">ESPACE ADMINISTRATION</a></strong></div>
+                                        
+                                <?php } } ?>
+                            </div>
+                        </ul>
+                    </div>     
                     <div class="line_nav"></div> 
-                    <ul class="col-lg-12">
+                    <ul class="menu_classic col-lg-12">
                         <li><a href="index.php?action=accueil">ACCUEIL</a></li>
                         <li><a href="index.php?action=biographie">BIOGRAPHIE</a></li>
                         <li><a href="index.php?action=articles&index_page=1">CHAPITRES</a></li>
@@ -87,4 +116,24 @@ $title = '';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </html>
 
+<script>
+$('#burger').on('click', function(){
+    if (!$('#burger').hasClass('active')){
+        $('#burger').addClass('active');
+        $('.first_line').css('animation', 'rotateFirst 0.5s forwards');
+        $('.second_line').css('opacity', '0');
+        $('.third_line').css('animation', 'rotateThird 0.5s forwards');
+        $('#block_menu').css('animation', 'moveRight 0.5s forwards');
+        $('.menu_burger li, .menu_connexion_burger').css('display', 'flex');
+    } else {
+        $('#burger').removeClass('active');
+        $('.first_line').css('animation', 'rotateFirstReverse 0.5s forwards');
+        $('.second_line').css('opacity', '1');
+        $('.third_line').css('animation', 'rotateThirdReverse 0.5s forwards');
+        $('#block_menu').css('animation', 'moveLeft 0.5s forwards');
+        $('.menu_burger li, .menu_connexion_burger').css('display', 'none');
 
+
+    }
+});
+</script>

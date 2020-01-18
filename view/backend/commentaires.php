@@ -13,7 +13,7 @@ ob_start();
             $article = $articlesManager->getOnePost($comment['id_article']);
 
             echo <<<HTML
-            <table class="table table-bordered mt-5">
+            <table class="container table table-bordered mt-5">
                 <tbody>
                     <th><i class="fas fa-user"></i> PSEUDO</th>
                     <th><i class="fas fa-clock"></i> DATE COMMENTAIRE</th>

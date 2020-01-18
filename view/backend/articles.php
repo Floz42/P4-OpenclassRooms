@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-    <div id="container_admin" class="mt-5 container-fluid">
+    <div id="container_admin" class="mt-5">
         <div id="head_articles" class="col-lg-10 col-xs-12">
            <h3>Voici la liste des chapitres de votre blog</h3>
            <p>Vous avez ici la possibilité de modifier vos chapitres mais également d'en rédiger de nouveaux. Les chapitres sont affichés par ordre inversé pour que vous ayez un coup d'oeil sur les derniers chapitres rédigés.</p>
@@ -29,7 +29,7 @@ ob_start();
         </div>
         <?php foreach($articles as $article) {
             echo <<<HTML
-            <table class="table table-bordered mt-5">
+            <table class="container table table-bordered mt-5">
                 <tbody>
                     <th><i class="fas fa-user"></i> NUMÉRO CHAPITRE</th>
                     <th><i class="fas fa-heading"></i> TITRE CHAPITRE</th>
@@ -41,7 +41,7 @@ ob_start();
                     <th scope="col">{$article['date_article']}</th>
                 </tr>
                 <tr class="border_table">
-                    <td colspan="4" class="text-center"><h3>CONTENU DU CHAPITRE :</h3></td>
+                    <td colspan="4" class="text-center"><h4>CONTENU DU CHAPITRE :</h4></td>
                 </tr>
                 <tr class="border_table">
                     <td colspan="4">{$article['content_article']}</td>

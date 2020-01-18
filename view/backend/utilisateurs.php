@@ -8,7 +8,7 @@ ob_start();
         </div>
         <div> <?= $message ?? ''; ?></div>
         
-            <table class="table table-bordered mt-5">
+            <table class="container table table-bordered mt-5">
                 <tbody>
                     <th><i class="fas fa-lightbulb"></i> ID</th>
                     <th><i class="fas fa-user"></i> PSEUDO</th>
