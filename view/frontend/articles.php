@@ -6,6 +6,7 @@ $keywords = 'blog,jean,forteroche,écrivain,roman,romans,alaska,saint-etienne,li
 ob_start();
 ?>
     <div id="container_articles" class="mt-5 container mb-5">
+        <div id="scroll"></div>
         <div class="text-center mb-5">       
             Êtes-vous prêt à plonger dans un rêve ?
             Vous retrouverez ici mon dernier roman "Billet simple pour l'Alaska" et vous découvrirez dans un roman incroyable qui, je suis sûr vous donnera envie de me rejoindre dans ce merveilleux pays. 
@@ -18,7 +19,7 @@ ob_start();
                     foreach ($articles as $article) {  
                         $id = $article['id'];    
                         echo <<<HTML
-                        <div class="one_article col-lg-6 col-xs-12 text-center">
+                        <div data-aos="fade-up" class="one_article col-lg-6 col-xs-12 text-center">
                             <a href="index.php?action=one_post&id={$id}"><h4> CHAPITRE {$article['number_article']} :</h4><h5>  {$article['title_article']} </h5></a>
                             <hr>
                         </div>

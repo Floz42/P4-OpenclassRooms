@@ -7,6 +7,7 @@ ob_start();
 ?>
     <?php if (isset($_GET['reporting']) && ($_GET['reporting'] === 'on')) : echo $confirm; endif ?>
     <div class="ml-5 mt-1 mb-5">
+        <div id="scroll"></div>
         <a href="index.php?action=articles&index_page=1" class="mt-1 mb-5 back">Retour à la liste des chapitres</a>
     </div>
     <div id="container_article" class="mt-1 container col-lg-10 col-xs-12">

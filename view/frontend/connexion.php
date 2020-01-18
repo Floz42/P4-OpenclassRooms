@@ -4,6 +4,7 @@ $keywords = "blog,jean,forteroche,alaska,billet,simple,inscription,connexion,mem
 ob_start();
 ?>
     <div id="container_connexion" class="mt-5 container-fluid">
+        <div id="scroll"></div>
         <div class="row title_connexion text-center col-lg-12 mb-3">Connexion / Inscription</div>
         <div class="container_block">
         <?php if (isset($_SESSION['pseudo'])) {

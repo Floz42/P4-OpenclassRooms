@@ -17,6 +17,7 @@ $title = '';
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="public/css/style.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link rel="stylesheet" href="public/css/breakpoints.css"> 
         <link rel="shortcut icon" href="public/img/logo.ico" />
@@ -29,7 +30,7 @@ $title = '';
                 <div class="connexion_home">
                     <?php
                      if (!isset($_SESSION['connected'])) { ?>
-                        <i class="mr-1 fas fa-user"></i> <a href="index.php?action=connexion">SE CONNECTER</a>
+                        <i class="mr-1 fas fa-user"></i> <a class="scroll" href="index.php?action=connexion">SE CONNECTER</a>
                         <i class="mr-1 fas fa-pen"></i> <a href="index.php?action=connexion">S'INSCRIRE</a>
                     <?php } else { ?>
                         <i class="fas fa-sign-out-alt"></i> <a href="index.php?action=deconnexion">SE DECONNECTER</a>
@@ -114,26 +115,9 @@ $title = '';
     </body>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="public/js/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="public/js/Burger.js"></script>
 </html>
 
-<script>
-$('#burger').on('click', function(){
-    if (!$('#burger').hasClass('active')){
-        $('#burger').addClass('active');
-        $('.first_line').css('animation', 'rotateFirst 0.5s forwards');
-        $('.second_line').css('opacity', '0');
-        $('.third_line').css('animation', 'rotateThird 0.5s forwards');
-        $('#block_menu').css('animation', 'moveRight 0.5s forwards');
-        $('.menu_burger li, .menu_connexion_burger').css('display', 'flex');
-    } else {
-        $('#burger').removeClass('active');
-        $('.first_line').css('animation', 'rotateFirstReverse 0.5s forwards');
-        $('.second_line').css('opacity', '1');
-        $('.third_line').css('animation', 'rotateThirdReverse 0.5s forwards');
-        $('#block_menu').css('animation', 'moveLeft 0.5s forwards');
-        $('.menu_burger li, .menu_connexion_burger').css('display', 'none');
 
-
-    }
-});
-</script>

@@ -4,9 +4,10 @@ $description = 'Toutes les dates clés de la vie de Jean Forteroche, de sa naiss
 $keywords = 'biographie,jean,forteroche,écrivain,roman,romans,alaska,saint-etienne,livres,billet,simple';
 
 ob_start();
-?>
+?>  
     <div id="container_bio" class="mt-5 container mb-5">
         <div id="biographie" class="row col-lg-6 col-md-12 mb-3">
+            <div id="scroll"></div>
             <h4 class="one_title mb-5">
                 Biographie de Jean Forteroche - Dates clés :
             </h4>
@@ -43,7 +44,7 @@ ob_start();
 
             </pre>        
         </div>
-        <div id="portrait" class="col-lg-6 col-xs-3">
+        <div data-aos="fade-left" data-aos-duration="2000" id="portrait" class="col-lg-6 col-xs-3">
             <img src="public/img/portrait.png" alt="portrait Jean Forteroche">
         </div>
     </div>
