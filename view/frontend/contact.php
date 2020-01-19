@@ -1,4 +1,6 @@
 <?php
+namespace Blog\view\frontend;
+
 $title = 'Contact - Blog de Jean Forteroche';
 $description = 'Si vous avez une quesion ou une interrogation sur le site, votre compte ou tout autre, vous êtes au bon endroit.';
 $keywords = 'contact,question,jean,forteroche,formulaire,demande,compte,blog,site';

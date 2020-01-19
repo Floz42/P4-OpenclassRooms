@@ -1,6 +1,8 @@
 <?php
+namespace Blog\view\frontend;
+
 $title = "Chapitre : $title_article";
-$description = $intro_article;
+$description = htmlspecialchars($intro_article);
 $keywords = 'blog,jean,forteroche,écrivain,roman,romans,alaska,saint-etienne,livres,billet,simple,articles,chapitres,livre';
 
 ob_start();
@@ -28,7 +30,6 @@ ob_start();
                     </div>
                     <div class="body_comment">{$comment['comment']}</div>
                 </div>
-
 HTML;
             }
             ?>

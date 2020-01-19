@@ -1,4 +1,6 @@
 <?php
+namespace Blog\view\backend;
+
 ob_start();
 ?>
     <div id="container_admin" class="mt-5">

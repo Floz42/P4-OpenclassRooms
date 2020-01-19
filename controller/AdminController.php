@@ -1,6 +1,6 @@
 <?php 
 
-namespace controller; 
+namespace Blog\controller; 
 
 class AdminController {
     

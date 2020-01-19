@@ -1,3 +1,6 @@
+<?php 
+namespace Blog;
+?>
 <!DOCTYPE html>
 
 <html lang="fr">

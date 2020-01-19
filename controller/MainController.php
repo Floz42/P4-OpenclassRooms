@@ -1,8 +1,6 @@
 <?php 
 
-namespace controller;
-
-use Blog\model\CommentsManager;
+namespace Blog\controller;
 
 class MainController {
 
@@ -16,6 +14,11 @@ class MainController {
         require_once('view/frontend/biographie.php');
     }
 
+    function error() 
+    {
+        require_once('view/error.php');
+    }
+
     /**
      * contact use to contact page and verify if all inputs aren't empty
      *
@@ -24,7 +27,7 @@ class MainController {
     public function contact()
     {        
         $confirm = false;
-
+        // verificaton before submit message contact with message in return
         if (isset($_POST['submit'])) {
             if (empty($_POST['name']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['message']) ) {
                 if (empty($_POST['name'])) {
@@ -66,6 +69,7 @@ class MainController {
     {
         require_once('model/ArticlesManager.php');
 
+        // add a 'paginaion' 
         $i = (int)htmlspecialchars($_GET['index_page']);
         $error = "<div class='alert alert-danger'> Une erreur est survenue, il est impossible d'afficher la liste des articles</div>";
        
@@ -74,6 +78,8 @@ class MainController {
         $count_articles = $articlesManager->countArticles();
         $total_articles = (int)$count_articles["number_articles"];
         $total_pages = ceil($total_articles / 5);   
+
+        //security if user change $_GET['index_page']
         $success = ($_GET['index_page'] > $total_pages || !(int)$_GET['index_page']|| $_GET['index_page'] < 0) ? false : true;
 
         require_once('view/frontend/articles.php');
@@ -93,6 +99,7 @@ class MainController {
         $article = $articlesManager->getOnePost($_GET['id']);
         $title_article = $article['title_article'];
         $content_article = $article['content_article'];
+        // $intro_article -> for SEO meta description
         $intro_article = substr($content_article, 0, 190);
         $date_article = $article['date_article'];
 
@@ -100,6 +107,7 @@ class MainController {
         $comments = $commentManager->getCommentsToAPost($_GET['id']);
         $confirm = "<div class='alert alert-success'> Le commentaire à bien été signalé à l'administrateur </div>";
 
+        // users can add a report to a comment 
         if ((!isset($_GET['reporting'])) || ($_GET['reporting'] !== 'on')) {
             $has_report = '&reporting=on';
         } else {
@@ -111,6 +119,8 @@ class MainController {
                 header('Location:' . $_SERVER["HTTP_REFERER"] . $has_report ?? '');
             } 
         }
+
+        // verifications to post a comment
         $validation_comment = false;
         if (!empty($_POST)) {
             if (empty($_POST['post_comment'])) {
@@ -122,6 +132,7 @@ class MainController {
         }
         if ($validation_comment) {
             $comment_author = $_SESSION['pseudo'];
+            // security and respect return at line
             $comment_content = nl2br(htmlentities($_POST['post_comment']));
             $id_post = $_GET['id'];
             $commentManager->addComment($comment_author,$comment_content,$id_post);
@@ -134,11 +145,17 @@ class MainController {
         require_once('view/frontend/one_post.php');
     }
 
+    /**
+     * connexion -> verification connexion informations and  submit informations
+     *
+     * @return void
+     */
     public function connexion()
     {
         require_once('model/UsersManager.php');
-        $UsersManager = new \blog\model\UsersManager;    
-
+        $UsersManager = new \blog\model\UsersManager;   
+        
+        //verfification before connexion 
         if (isset($_POST['connexion'])) {
             $connexion = true; 
             $pseudo_exist = $UsersManager->pseudoExist($_POST['pseudo_connexion']); 
@@ -165,6 +182,7 @@ class MainController {
             }
         }
 
+        // all verifications before subscribe
         if (isset($_POST['submit_subscribe'])) {
             $validation = true;
             $user_exist = $UsersManager->pseudoExist($_POST['pseudo_subscribe']);
@@ -200,6 +218,11 @@ class MainController {
         require_once('view/frontend/connexion.php');
     }
 
+    /**
+     * deconnexion -> destroy session and unset cookie
+     *
+     * @return void
+     */
     public function deconnexion()
     {
         session_destroy();

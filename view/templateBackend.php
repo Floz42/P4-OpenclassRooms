@@ -1,3 +1,6 @@
+<?php 
+namespace Blog;
+?>
 <!DOCTYPE html>
 <?php
 if (empty($_SESSION['id'])) {

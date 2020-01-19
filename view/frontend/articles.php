@@ -1,4 +1,6 @@
 <?php
+namespace Blog\view\frontend;
+
 $title = 'Chapitres - Blog de Jean Forteroche';
 $description = 'Retrouvez chapitre par chapitre le nouveau roman de Jean Forteroche "Billet simple pour l\'Alaska';
 $keywords = 'blog,jean,forteroche,écrivain,roman,romans,alaska,saint-etienne,livres,billet,simple,articles,chapitres,livre';

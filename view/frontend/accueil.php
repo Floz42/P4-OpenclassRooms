@@ -1,4 +1,5 @@
 <?php
+namespace Blog\view\frontend;
 ob_start();
 ?>
     <div id="container_home" class="mt-5 container-fluid">

@@ -1,5 +1,5 @@
 <?php
-namespace controller;
+namespace Blog\controller;
 require_once ('routes.php');
  $routes = new Routes();
 

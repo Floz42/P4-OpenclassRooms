@@ -1,4 +1,6 @@
 <?php
+namespace Blog\view\frontend;
+
 $title = "Blog de Jean Forteroche - Espace de connexion / inscription";
 $keywords = "blog,jean,forteroche,alaska,billet,simple,inscription,connexion,membres,commentaires,articles,chapitres";
 ob_start();

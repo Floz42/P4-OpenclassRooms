@@ -3,6 +3,7 @@ $(window).on('load', function() {
     const burger = new Burger();
     AOS.init();
 
+    // SCROLL AUTOMATICALLY TO SECTION
     let device_scroll;
     if (window.matchMedia("(max-width: 768px)").matches) {
         device_scroll = 250; 
