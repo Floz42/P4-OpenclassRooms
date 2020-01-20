@@ -3,7 +3,8 @@
 namespace Blog\controller; 
 
 class AdminController {
-    
+
+    // to block access to admin pages with url
     function verif_role() 
     {
         if ($_SESSION['user_role'] != 'admin') {            
@@ -16,6 +17,11 @@ class AdminController {
         require_once('view/backend/accueil.php');
     }
 
+    /**
+     * admin_users -> administration of users (delete) and them roles
+     *
+     * @return void
+     */
     function admin_users() 
     {
         require_once('model/UsersManager.php');
@@ -27,6 +33,7 @@ class AdminController {
             $change_role = $usersManager->changeRole($_GET['id_role'], $role);
             header('Location: index.php?action=utilisateurs&change_role=true');
         }
+
         if (isset($_GET['change_role'])) {
             $message = "<div class='alert alert-success'>Le rôle de l'utilisateur à bien été changé.</div>";
         }
@@ -41,9 +48,13 @@ class AdminController {
         }
 
         require_once('view/backend/utilisateurs.php');
-
     }
 
+    /**
+     * admin_comments -> admin can put to 0 the reports and delete the comments what he want
+     *
+     * @return void
+     */
     function admin_comments() 
     {
         require_once('model/CommentsManager.php');
@@ -55,6 +66,7 @@ class AdminController {
         $i = (int)htmlspecialchars($_GET['index_comments']);
         $error = "<div class='alert alert-danger'> Une erreur est survenue, il est impossible d'afficher la liste des articles</div>";
         
+        // return the comments five by five in administror panel
         $comments = $commentsManager->getComments_five($i);
   
         $count_comments = $commentsManager->countComments();
@@ -62,6 +74,7 @@ class AdminController {
         $total_pages = ceil($total_comments / 5);   
         $success = ($_GET['index_comments'] > $total_pages || !(int)$_GET['index_comments']|| $_GET['index_comments'] < 0) ? false : true;
 
+        // for delete comment
         if(isset($_GET['delete_comment'])) {
             $delete_comment = $commentsManager->delComment($_GET['delete_comment']);
             header('Location: index.php?action=commentaires&index_comments=1&comment_deleted=true');
@@ -71,6 +84,7 @@ class AdminController {
             $message = "<div class='alert alert-success'>Le commentaire à bien été supprimé.</div>";
         }
 
+        // for remove reports
         if(isset($_GET['set_empty'])) {
             $delete_reports = $commentsManager->delReports($_GET['set_empty']);
             header('Location: index.php?action=commentaires&index_comments=1&reports_set_empty=true');
@@ -84,6 +98,11 @@ class AdminController {
     }
 
 
+    /**
+     * admin_articles -> here, admin can add articles or modify them
+     *
+     * @return void
+     */
     public function admin_articles() 
     {
         require_once('model/ArticlesManager.php');
@@ -94,6 +113,7 @@ class AdminController {
         $number_article = (int)$last_number_article['number_article'] + 1;
         $display = 'display: none;';
 
+        // verification before publishing articles
         $publication_article = false; 
         if (!empty($_POST['published'])) {
             if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['number_article'])) {
@@ -118,6 +138,7 @@ class AdminController {
             }
         }
 
+        // add article to the DB
         if ($publication_article) {
             $articlesManager->createPost($_POST['title'], $_POST['number_article'], $_POST['content']);
             header('Location: index.php?action=admin_articles&article_published=true');            
@@ -139,6 +160,7 @@ class AdminController {
             $title_write_article = 'MODIFIER UN CHAPITRE DE VOTRE ROMAN :';
         }
 
+        // verify article before update
         $update_article = false;
         if (!empty($_POST['updates'])) {
             if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['number_article'])) {
@@ -163,6 +185,7 @@ class AdminController {
             }
         }
 
+        // adding article to the DB
         if ($update_article) {
             $confirm_article = 'PUBLIER';
             $update = $articlesManager->updatePost($id_article, $_POST['number_article'], $_POST['title'], $_POST['content']); 
@@ -173,6 +196,7 @@ class AdminController {
             $confirm = "<div class='alert alert-success'>Votre chapitre a bien été mis à jour.</div>";
         }
 
+        // delete article to the DB
         if (isset($_GET['delete_post'])) {
             $delete = $articlesManager->deletePost($_GET['delete_post']); 
             header('Location: index.php?action=admin_articles&delete_success');

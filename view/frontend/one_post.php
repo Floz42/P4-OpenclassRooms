@@ -7,6 +7,7 @@ $keywords = 'blog,jean,forteroche,écrivain,roman,romans,alaska,saint-etienne,li
 
 ob_start();
 ?>
+    <!-- $confirm -> message for user who confirm that his report has been add to DB -->
     <?php if (isset($_GET['reporting']) && ($_GET['reporting'] === 'on')) : echo $confirm; endif ?>
     <div class="ml-5 mt-1 mb-5">
         <div id="scroll"></div>
@@ -35,6 +36,7 @@ HTML;
             ?>
         <div id="container_user" class="mt-3 mb-3 col-lg-6 col-xs-12">
             <div class="head_user">POSTER UN COMMENTAIRE : </div>
+            <!-- if user isn't connected, he can't post a comment and we invite him to connect or subscribe -->
             <?php if (!isset($_SESSION['pseudo'])) {
                 echo <<<HTML
                 <div class="col-lg-10 mx-auto">

@@ -11,6 +11,7 @@ ob_start();
         <div id="scroll"></div>
         <div id="contact" class="row col-lg-12 mb-3 container p-0">
             <p class="text-center"> Pour tout question vous pouvez nous contacter via le formulaire ci-dessous.</p>
+            <!-- all next $variables corresponding to verifications input -->
             <form action="" method="post">
                 <div data-aos="fade-left" class="input_contact"><i class="fas fa-user"></i> <input type="text" class="form-control" name="name" placeholder="Votre nom"></div>
                 <?= $name ?? '' ?>

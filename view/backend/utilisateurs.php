@@ -8,6 +8,7 @@ ob_start();
            <h3>Voici la liste des utilisateurs de votre site, leur e-mail ainsi que leur rôle.</h3>
            <p> D'un simple clic sur leur rôle actuel, vous pouvez changer leur rôle sur le site ou supprimer un utilisateur. A savoir qu'un utilisateur administrateur devra également avoir les codes d'accès à la page sécurisé (.htaccess)</p>
         </div>
+        <!-- $message -> confirm message after change role or delete user -->
         <div> <?= $message ?? ''; ?></div>
         
             <table class="container table table-bordered mt-5">
@@ -18,6 +19,7 @@ ob_start();
                     <th><i class="fas fa-cogs"></i> RÔLE</th>
                 </tbody>
                 <?php foreach($users as $user) {
+                    // $disabled -> security : nobody can DELETE the principal admin (Jean Forteroche)
                     $disabled = ($user['pseudo'] === 'JeanForteroche') ? 'disabled' : '';
                     echo <<<HTML
                     <tr>

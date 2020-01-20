@@ -13,6 +13,7 @@ ob_start();
 
         <div class="mt-1 mb-5 col-lg-12 write_article">
             <form class="col-lg-8 mt-5 mb-5" method="post" action="">
+                <!-- $display : if "add" artciles -> display none, if "update" article -> displzy flex (initial) -->
                 <label for="id" style="<?= $display ?? ''?>"><h3>ID : </h3></label>
                 <input class="form-control" style="<?= $display ?? ''?>" type="text" name="id" disabled="true" value="<?= $id_article ?? ''?>">
                 <label class="mt-3" for="number_article"><h3>NUMÉRO DU CHAPITRE : </h3></label>
@@ -24,6 +25,7 @@ ob_start();
                 <label class="mt-3" for="mytextarea"><h3>CONTENU DU CHAPITRE : </h3></label>
                 <textarea class="form-group" id="mytextarea" name="content"><?= $content_article ?? ''?></textarea>
                 <?= $confirm_content ?? ''?>
+                <!-- $button_confirm : change state of button if admin is adding or updating article-->
                 <input type="submit" name="<?= $button_confirm ?? 'published' ?>" class="mt-3 btn btn-primary" value="<?= $confirm_article ?? 'PUBLIER' ?>">
                 <button type="reset" class="mt-3 btn btn-danger">EFFACER</button>
                

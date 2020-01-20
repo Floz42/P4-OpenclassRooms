@@ -45,6 +45,7 @@ $title = '';
                     <div id="site_title" class="col-lg-12">
                         JEAN FORTEROCHE
                     </div>
+                    <!-- Burger menu if device has a max-width to 768 px -->
                     <div id="menu_burger">
                         <div id="burger">
                             <div id="lines">
@@ -75,6 +76,7 @@ $title = '';
                         </ul>
                     </div>     
                     <div class="line_nav"></div> 
+                    <!-- Menu for desktop (> 768px) and large devices --> 
                     <ul class="menu_classic col-lg-12">
                         <li><a href="index.php?action=accueil">ACCUEIL</a></li>
                         <li><a href="index.php?action=biographie">BIOGRAPHIE</a></li>
@@ -83,6 +85,7 @@ $title = '';
                     </ul>
                 </nav>
             </header>
+            <!-- BOOTSTRAP CAROUSEL -->
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">

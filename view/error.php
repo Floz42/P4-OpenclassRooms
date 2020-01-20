@@ -3,6 +3,7 @@ namespace Blog;
 
 ob_start();
 ?>
+    <!-- For redirection errors -->
     <div id="container_error" class="mt-5 container-fluid">
         <div id="error" class="mx-auto mb-5 text-center col-lg-8 col-xs-10">
             <div id="scroll"></div>

@@ -8,9 +8,6 @@ if (!isset($_COOKIE['expiration'])) {
 require_once('controller/MainController.php');
 require_once('controller/AdminController.php');
 
-
-
-
 class Routes {
 
     public function __construct()
