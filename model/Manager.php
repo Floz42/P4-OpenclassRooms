@@ -20,4 +20,4 @@ class Manager {
     }
 }
 
-echo "tttt000test";
+
