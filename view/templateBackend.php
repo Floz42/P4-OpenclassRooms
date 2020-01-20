@@ -22,7 +22,7 @@ $title = '';
         <link rel="stylesheet" href="public/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link rel="stylesheet" href="public/css/breakpoints.css"> 
-        <link rel="shortcut icon" href="public/img/logo.ico" />
+        <link rel="shortcut icon" href="public/img/icon.ico" />
         <script src="https://cdn.tiny.cloud/1/ewzsiip33a1my2zwspbb5uuxo8dg1o815xvg6xd2ky41dyb2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script>tinymce.init({selector: '#mytextarea'});</script>
         <title> Espace administrateur : Blog de Jean Forteroche </title>
