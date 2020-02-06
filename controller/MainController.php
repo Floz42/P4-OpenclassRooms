@@ -173,10 +173,10 @@ class MainController {
                 }
             }
             if ($connexion) {
+                $_SESSION['connected'] = true;
                 $user_role = $get_user['user_role'];
                 $message_connexion = '<div class="alert alert-success mt-1">Vous êtes maintenant connecté. </div>';
                 $_SESSION['pseudo'] = $_POST['pseudo_connexion'];
-                $_SESSION['connected'] = true;
                 $_SESSION['user_role'] = $user_role;
                 setcookie('expiration', 'date', time() + 60 * 60 * 12, null, null, false, true);
             }

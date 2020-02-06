@@ -1,7 +1,7 @@
 <?php 
 namespace Blog\model;
 
-class Manager {
+abstract class Manager {
 
     /**
      * dbConnect --> connexion DB
