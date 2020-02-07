@@ -57,9 +57,10 @@ class Routes {
                     $controller_admin->admin_articles();
                 break;
                 default:
-                    $controller->error();
+                    $controller->accueil();
             }
         }
+
         catch(\Exception $e) 
         {
             $controller->error();
