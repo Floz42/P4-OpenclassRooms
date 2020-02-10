@@ -1,9 +1,6 @@
 <?php 
 namespace Blog\controller;
 session_start();
-if (!isset($_COOKIE['expiration'])) {
-    session_destroy();
-}
 
 require_once('controller/MainController.php');
 require_once('controller/AdminController.php');

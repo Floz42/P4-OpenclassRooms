@@ -173,7 +173,6 @@ class MainController {
                 }
             }
             if ($connexion) {
-                setcookie('expiration', 'date', time() + 60 * 60 * 12, null, null, false, true);
                 $_SESSION['connected'] = true;
                 $_SESSION['pseudo'] = $_POST['pseudo_connexion'];
                 $user_role = $get_user['user_role'];
@@ -226,7 +225,6 @@ class MainController {
     public function deconnexion()
     {
         session_destroy();
-        setcookie('expiration', 'date', -360);
         header('Location: index.php?action=accueil');
     }
 }
