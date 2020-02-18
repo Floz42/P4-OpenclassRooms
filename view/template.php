@@ -69,8 +69,7 @@ $title = '';
                                         <?php } else { ?>
                                             <div class="link_burger"><i class="fas fa-sign-out-alt"></i> <a href="index.php?action=deconnexion">SE DECONNECTER</a></div>
                                         <?php if ($_SESSION['user_role'] == 'admin') { ?>
-                                            <div class="link_burger"><i class="fas fa-unlock-alt"></i> <strong><a href="index.php?action=admin">ESPACE ADMINISTRATION</a></strong></div>
-                                        
+                                            <div class="link_burger"><i class="fas fa-unlock-alt"></i> <strong><a href="index.php?action=admin">ESPACE ADMINISTRATION</a></strong></div>     
                                 <?php } } ?>
                             </div>
                         </ul>

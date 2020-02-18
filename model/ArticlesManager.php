@@ -21,7 +21,7 @@ class ArticlesManager extends Manager
      * getPosts -> get all posts 4 by 4 in DB
      * Use for paging on website 
      *
-     * @return array
+     * @return array $articles
      */
     public function getPosts_five($i) 
     {   
@@ -37,23 +37,7 @@ class ArticlesManager extends Manager
     /**
      * getPosts -> get all posts in DB
      *
-     * @return void
-     */
-    public function getPosts() 
-    {
-        $articles = [];
-        $req = $this->db->query('SELECT *, DATE_FORMAT(date_article, "%d/%m/%Y") as date_article FROM Articles ORDER BY number_article DESC');
-        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) 
-        {
-            $articles[] = $data;
-        }
-        return $articles;
-    }
-    
-    /**
-     * getPosts -> get all posts in DB
-     *
-     * @return void
+     * @return array $articles
      */
     public function getPosts_reverse() 
     {
@@ -155,7 +139,6 @@ class ArticlesManager extends Manager
         $data = $req->fetch(\PDO::FETCH_ASSOC);
         return $data;
     }
-
 }
 
 

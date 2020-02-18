@@ -27,8 +27,8 @@ HTML;
                     <label class="m-0 mt-2" for="password">Mot de passe :</label>
                     <input type="password" name="password_connexion" class="form-control" required>
                     <input type="submit" name="connexion" class="btn btn-outline-secondary btn-sm mt-3 mb-3" value="Envoyer">
-                    <!-- $message_connexion -> error if pseudo doesn't exist or if it isn't corresponding with password. Else success -->
-                    <?= $message_connexion ?? '' ?>
+                        <!-- $message_connexion -> error if pseudo doesn't exist or if it isn't corresponding with password. Else success -->
+                        <?= $message_connexion ?? '' ?>
                 </form>
             </div>
 
@@ -41,22 +41,22 @@ HTML;
                     <!-- all next $variables corresponding to verifications input -->
                     <label class="m-0 mt-2" for="pseudo_subscribe">Pseudo :</label>
                     <input type="text" name="pseudo_subscribe" class="form-control" required>
-                    <?= $pseudo_subscribe ?? '' ?>
-                    <?= $pseudo2_subscribe ?? '' ?>
+                        <?= $pseudo_subscribe ?? '' ?>
+                        <?= $pseudo2_subscribe ?? '' ?>
                     <label class="m-0 mt-2" for="password_subscribe">Mot de passe :</label>
                     <input type="password" name="password_subscribe" class="form-control" required>
-                    <?= $password_subscribe ?? '' ?>
+                        <?= $password_subscribe ?? '' ?>
                     <label class="m-0 mt-2" for="confirm_password_subscribe">Confirmation mot de passe :</label>
                     <input type="password" name="confirm_password_subscribe" class="form-control" required>
-                    <?= $password_subscribe ?? '' ?>
+                        <?= $password_subscribe ?? '' ?>
                     <label class="m-0 mt-2" for="email_subscribe">E-mail :</label>
                     <input type="text" name="email_subscribe" class="form-control" required>
-                    <?= $email_subscribe ?? '' ?>
+                        <?= $email_subscribe ?? '' ?>
                     <input type="submit" name="submit_subscribe" class="btn btn-outline-secondary btn-sm mt-3 mb-3" value="S'inscrire">
-                    <?= $message_subscribe ?? '' ?>
+                        <?= $message_subscribe ?? '' ?>
                 </form>
             </div>
-                    <?php } ?>
+                <?php } ?>
         </div>
     </div>
 <?php 

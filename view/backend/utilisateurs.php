@@ -6,7 +6,7 @@ ob_start();
     <div id="container_admin" class="mt-5 container-fluid">
         <div id="utilisateurs_admin" class="row col-lg-10">
            <h3>Voici la liste des utilisateurs de votre site, leur e-mail ainsi que leur rôle.</h3>
-           <p> D'un simple clic sur leur rôle actuel, vous pouvez changer leur rôle sur le site ou supprimer un utilisateur. A savoir qu'un utilisateur administrateur devra également avoir les codes d'accès à la page sécurisé (.htaccess)</p>
+           <p> D'un simple clic sur leur rôle actuel, vous pouvez changer leur rôle sur le site ou supprimer un utilisateur. Nous avons sécuriser cette page afin que personne ni même vous ne puisse supprimer votre compte ou changer votre rôle administrateur.</p>
         </div>
         <!-- $message -> confirm message after change role or delete user -->
         <div> <?= $message ?? ''; ?></div>
@@ -34,8 +34,6 @@ HTML;
                 ?>
 
             </table>
-
-        
     </div>
 <?php 
 $content = ob_get_clean();

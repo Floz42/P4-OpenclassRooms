@@ -31,7 +31,7 @@ class CommentsManager extends Manager {
      *
      * @param  mixed $id
      *
-     * @return array
+     * @return array $comments
      */
     public function getCommentsToAPost($id) 
     {
@@ -48,7 +48,7 @@ class CommentsManager extends Manager {
     /**
      * getComments -> got ALL comments order by number of reports
      *
-     * @return array
+     * @return array $comments
      */
     public function getComments() {
         $comments = [];
@@ -65,7 +65,7 @@ class CommentsManager extends Manager {
      *
      * @param  mixed $i
      *
-     * @return void
+     * @return $comments
      */
     public function getComments_five($i) 
     {   
@@ -155,7 +155,7 @@ class CommentsManager extends Manager {
         $req->execute(array('id' => $id));
     }
 
-        /**
+    /**
      * countComments 
      *
      * @return total comments in DB
@@ -165,8 +165,6 @@ class CommentsManager extends Manager {
         $req = $this->db->query('SELECT COUNT(id) as number_comments FROM Comments');
         $data = $req->fetch(\PDO::FETCH_ASSOC);
         return $data;
-    }
-
-    
+    }  
 }
 

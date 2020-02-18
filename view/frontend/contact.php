@@ -10,22 +10,21 @@ ob_start();
     <div id="container_contact" class="mt-5 mb-5">
         <div id="scroll"></div>
         <div id="contact" class="row col-lg-12 mb-3 container p-0">
-            <p class="text-center"> Pour tout question vous pouvez nous contacter via le formulaire ci-dessous.</p>
+            <p class="text-center"> Pour toutes questions vous pouvez nous contacter via le formulaire ci-dessous.</p>
             <!-- all next $variables corresponding to verifications input -->
             <form action="" method="post">
                 <div data-aos="fade-left" class="input_contact"><i class="fas fa-user"></i> <input type="text" class="form-control" name="name" placeholder="Votre nom"></div>
-                <?= $name ?? '' ?>
+                    <?= $name ?? '' ?>
                 <div data-aos="fade-right" class="input_contact"><i class="fas fa-user"></i> <input type="text" class="form-control" name="lastname" placeholder="Votre prénom"></div>
-                <?= $lastname ?? '' ?>
+                    <?= $lastname ?? '' ?>
                 <div data-aos="fade-left" class="input_contact"><i class="fas fa-at"></i> <input type="email" class="form-control" name="email" placeholder="Votre e-mail"></div>
-                <?= $email ?? '' ?>
+                    <?= $email ?? '' ?>
                 <div data-aos="fade-right" class="input_contact"><i class="fas fa-envelope"></i> <input type="text" class="form-control" name="subject" placeholder="Le sujet du message"></div>
-                <?= $subject ?? '' ?>
+                    <?= $subject ?? '' ?>
                 <div data-aos="fade-left" class="input_contact"><i class="fas fa-envelope"> </i><textarea class="form-control" name="message" placeholder="Votre message"></textarea></div>
-                <?= $message ?? '' ?>
-                <button type="submit" name="submit" class="btn btn-outline-primary button_contact">Envoyer</button>
-                
-                <?= $confirm ?? '' ?>
+                    <?= $message ?? '' ?>
+                <button type="submit" name="submit" class="btn btn-outline-primary button_contact">Envoyer</button>           
+                    <?= $confirm ?? '' ?>
             </form>
         </div>
     </div>

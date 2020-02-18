@@ -8,7 +8,7 @@ class UsersManager extends Manager
 {
 
     /**
-     * __construc -> call DB when class is Instanciate
+     * __construct -> call DB when class is Instanciate
      *
      * @return void
      */
@@ -20,7 +20,7 @@ class UsersManager extends Manager
     /**
      * getUsers -> list of all users
      *
-     * @return array 
+     * @return array $users
      */
     public function getUsers()
     { 
@@ -33,6 +33,11 @@ class UsersManager extends Manager
         return $users;
     }
 
+    /**
+     * pseudoExist -> verify if user exist in db or not (0 : not pseudo, 1: user exist already)
+     *
+     * @return array $users
+     */
     public function pseudoExist($pseudo) 
     {
         $req = $this->db->prepare('SELECT COUNT(*) as pseudo_exist FROM Users WHERE pseudo = :pseudo'); 
@@ -110,7 +115,6 @@ class UsersManager extends Manager
         $req->execute(array('id' => $id));
     }
 
-
     /**
      * addAdmin -> change user_role 
      *
@@ -126,7 +130,6 @@ class UsersManager extends Manager
             'id' => $id
         ));
     }
-
 }
 
 
