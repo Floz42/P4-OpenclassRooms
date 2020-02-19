@@ -26,40 +26,48 @@ class MainController {
      */
     public function contact()
     {        
-        $confirm = false;
+        $confirm = true;
         // verificaton before submit message contact with message in return
         if (isset($_POST['submit'])) {
             if (empty($_POST['name']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['message']) ) {
                 if (empty($_POST['name'])) {
+                    $confirm = false;
                     $name = '<div class="alert alert-danger mt-3">Vous devez indiquer votre nom.</div>';
                 }
                 if (empty($_POST['lastname'])) {
+                    $confirm = false;
                     $lastname = '<div class="alert alert-danger mt-1">Vous devez indiquer votre prénom.</div>';
                 }
                 if (empty($_POST['subject'])) {
+                    $confirm = false;
                     $subject = '<div class="alert alert-danger mt-1">Merci d\'entrer le sujet de votre message.</div>';
                 }
                 if (empty($_POST['email'])) {
+                    $confirm = false;
                     $email = '<div class="alert alert-danger mt-1">Vous devez indiquer votre email.</div>';
                 }
                 if (empty($_POST['message'])) {
+                    $confirm = false;
                     $message = '<div class="alert alert-danger mt-1">Vous devez rédiger un message.</div>';
                 }
             } else {
+                $confirm = true;
+            }
+            if ($confirm) {
                 $confirm = '<div class="alert alert-success mt-3">Merci. Votre message a bien été envoyé.</div>';
-                $to = 'flo.carreclub@gmail.com';
                 $form_name = htmlentities($_POST['name']);
                 $form_lastname = htmlentities($_POST['lastname']);
                 $form_subject = htmlentities($_POST['subject']);
                 $form_email = htmlentities($_POST['email']);
-                $form_message = wordwrap(htmlentities($_POST['message']), 100, "\r\n");
-                $headers = 'From : ' . $form_name . ' ' . $form_lastname . ' E-mail : ' . $form_email;
-                mail($to, $form_subject, $form_message, $headers);
+                $headers = "From: $form_email" . "\r\n" .
+                "Content-type: text/html; charset=UTF-8";
+                $form_message = wordwrap(htmlentities($_POST['message']), 100, "\r\n") . "\r\n"
+                 . "De : " . $_POST['name'] . $_POST['lastname'];
+                mail("flo.carreclub@gmail.com", $form_subject, $form_message, $headers);
             }
         }
         require_once('view/frontend/contact.php');
     }
-
     /**
      * articles use to articles page 
      *
