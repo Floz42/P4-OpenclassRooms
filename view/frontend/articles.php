@@ -15,7 +15,7 @@ ob_start();
         </div>
         <div id="list_articles">
             <?php
-                // $success -> if user enter a number who don't exist in url 
+                // !$success -> if user enter a number who don't exist in url 
                 if (!$success) {
                     echo $error;
                 } else {

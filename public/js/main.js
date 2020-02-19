@@ -8,7 +8,7 @@ $(window).on('load', function() {
     if (window.matchMedia("(max-width: 768px)").matches) {
         device_scroll = 250; 
     } 
-    else if (window.matchMedia("(min-width: 769)").matches) {
+    else if (window.matchMedia("(min-width: 769px)").matches) {
         device_scroll = 750; 
     }; 
 

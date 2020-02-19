@@ -141,7 +141,6 @@ class MainController {
         if (isset($_GET['com'])) {
             $message_comment = "<div class='alert alert-success'> Merci ! Votre commentaire a bien été posté. </div>"; 
         }
-
         require_once('view/frontend/one_post.php');
     }
 

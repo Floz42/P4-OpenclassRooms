@@ -46,7 +46,6 @@ class AdminController {
         if (isset($_GET['delete_user'])) {
             $message = "<div class='alert alert-success'>L'utilisateur a été supprimé de la base de donnée.</div>";
         }
-
         require_once('view/backend/utilisateurs.php');
     }
 
@@ -129,10 +128,9 @@ class AdminController {
                     $publication_article = false; 
                     $confirm_number_article = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un numéro pour votre chapitre.</div>";
                 }  
-                elseif (!(int)($_POST['number_article'])) {
+            } elseif (!((int)($_POST['number_article']))) {
                     $publication_article = false; 
                     $confirm_number_article = "<div class='alert alert-danger'>Vous devez rentrez un chiffre en numéro de chapitre.</div>";
-                } 
             } else {
                 $publication_article = true; 
             }
@@ -142,7 +140,7 @@ class AdminController {
         if ($publication_article) {
             $articlesManager->createPost($_POST['title'], $_POST['number_article'], $_POST['content']);
             header('Location: index.php?action=admin_articles&article_published=true');            
-        }
+        } 
 
         if (isset($_GET['article_published'])) {
             $confirm = "<div class='alert alert-success'>Félicitations ! Votre chapitre a bien été publié.</div>";
@@ -176,10 +174,9 @@ class AdminController {
                     $update_article = false; 
                     $confirm_number_article = "<div class='alert alert-danger'>Article non publié : vous devez rentrer un numéro pour votre chapitre.</div>";
                 }  
-                elseif (!(int)($_POST['number_article'])) {
-                    $update_article = false; 
-                    $confirm_number_article = "<div class='alert alert-danger'>Vous devez rentrez un chiffre en numéro de chapitre.</div>";
-                } 
+            } elseif (!((int)($_POST['number_article']))) {
+                $update_article = false; 
+                $confirm_number_article = "<div class='alert alert-danger'>Vous devez rentrez un chiffre en numéro de chapitre.</div>";
             } else {
                 $update_article = true; 
             }

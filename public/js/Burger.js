@@ -20,8 +20,6 @@ class Burger {
                 $('.third_line').css('animation', 'rotateThirdReverse 0.5s forwards');
                 $('#block_menu').css('animation', 'moveLeft 0.5s forwards');
                 $('.menu_burger li, .menu_connexion_burger').css('display', 'none');
-        
-        
             }
         });
     }
