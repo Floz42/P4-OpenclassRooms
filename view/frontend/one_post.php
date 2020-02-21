@@ -9,6 +9,7 @@ ob_start();
 ?>
     <!-- $confirm -> message for user who confirm that his report has been add to DB -->
     <?php if (isset($_GET['reporting']) && ($_GET['reporting'] === 'on')) : echo $confirm; endif ?>
+    <?= $dont_report ?? '' ?>
     <div class="ml-5 mt-1 mb-5">
         <div id="scroll"></div>
         <a href="index.php?action=articles&index_page=1" class="mt-1 mb-5 back">Retour à la liste des chapitres</a>

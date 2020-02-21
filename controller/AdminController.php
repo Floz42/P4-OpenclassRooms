@@ -5,7 +5,7 @@ namespace Blog\controller;
 class AdminController {
 
     // to block access to admin pages with url
-    function verif_role() 
+    public function verif_role() 
     {
         if ($_SESSION['user_role'] != 'admin') {            
          header('Location: index.php?action=accueil');
@@ -22,7 +22,7 @@ class AdminController {
      *
      * @return void
      */
-    function admin_users() 
+    public function admin_users() 
     {
         require_once('model/UsersManager.php');
 
@@ -54,13 +54,15 @@ class AdminController {
      *
      * @return void
      */
-    function admin_comments() 
+    public function admin_comments() 
     {
         require_once('model/CommentsManager.php');
         require_once('model/ArticlesManager.php');
+        require_once('model/ReportsManager.php');
 
         $commentsManager = new \blog\model\CommentsManager;
         $articlesManager = new \blog\model\ArticlesManager;
+        $reportsManager = new \Blog\model\ReportsManager;
 
         $i = (int)htmlspecialchars($_GET['index_comments']);
         $error = "<div class='alert alert-danger'> Une erreur est survenue, il est impossible d'afficher la liste des articles</div>";
@@ -86,6 +88,7 @@ class AdminController {
         // for remove reports
         if(isset($_GET['set_empty'])) {
             $delete_reports = $commentsManager->delReports($_GET['set_empty']);
+            $delete_reports2 = $reportsManager->delReports($_GET['set_empty']);
             header('Location: index.php?action=commentaires&index_comments=1&reports_set_empty=true');
         }
 

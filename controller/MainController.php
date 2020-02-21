@@ -14,7 +14,7 @@ class MainController {
         require_once('view/frontend/biographie.php');
     }
 
-    function error() 
+    public function error() 
     {
         require_once('view/error.php');
     }
@@ -102,6 +102,7 @@ class MainController {
     {
         require_once('model/ArticlesManager.php');
         require_once('model/CommentsManager.php');
+        require_once('model/ReportsManager.php');
 
         $articlesManager = new \blog\model\ArticlesManager;
         $article = $articlesManager->getOnePost($_GET['id']);
@@ -111,6 +112,7 @@ class MainController {
         $intro_article = substr($content_article, 0, 190);
         $date_article = $article['date_article'];
 
+        $reportsManager = new \blog\model\ReportsManager;
         $commentManager = new \blog\model\CommentsManager;
         $comments = $commentManager->getCommentsToAPost($_GET['id']);
         $confirm = "<div class='alert alert-success'> Le commentaire à bien été signalé à l'administrateur </div>";
@@ -122,11 +124,27 @@ class MainController {
             $has_report = '';
         } 
         if (isset($_GET['report'])) {
-            if ($_GET['report'] === 'one_report') {
-                $commentManager->addReport($_GET['id_comment']);
-                header('Location:' . $_SERVER["HTTP_REFERER"] . $has_report ?? '');
-            } 
+            if (!isset($_SESSION['pseudo'])) {
+                header('Location: index.php?action=one_post&id=6' . '&not_connected=true');
+            } elseif ($_GET['report'] === 'one_report') {
+                $count_user = $reportsManager->countIfUserHasReport($_SESSION['pseudo'], $_GET['id_comment']);
+                if ($count_user < 1) {
+                    $commentManager->addReport($_GET['id_comment']);
+                    $reportsManager->addReport($_GET['id_comment'], $_SESSION['pseudo']);
+                    $link_report = "index.php?action=one_post&id=1&report=one_report&id_comment={$comment['id']}";
+                    header('Location:' . $_SERVER["HTTP_REFERER"] . $has_report ?? '');
+                } else {
+                    header('Location:' . $_SERVER["HTTP_REFERER"] . '&already_report=true');
+                }
+            }
         }
+        if (isset($_GET['not_connected'])) {
+            $dont_report = "<div class='alert alert-danger'> Vous devez être connecté pour signaler un commentaire. </div>";
+        }
+        if (isset($_GET['already_report'])) {
+            $dont_report = "<div class='alert alert-danger'> Vous avez déjà signalé ce commmentaire ! </div>";
+        }
+
 
         // verifications to post a comment
         $validation_comment = false;

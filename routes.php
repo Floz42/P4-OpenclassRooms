@@ -60,7 +60,9 @@ class Routes {
 
         catch(\Exception $e) 
         {
-            $controller->error();
+            die('Erreur :' .$e->getMessage());
+
+           // $controller->error();
 
         }
     }
